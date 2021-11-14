@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+.body{
+ backgrond-color: #202124
+}
+
+.ok{
+    background-color: #011a02 !important;
+} 
+
+.cancel{
+    background-color: #5c0303 !important;
+}

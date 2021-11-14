@@ -1,0 +1,9 @@
+.navbar.navbar-transparent {
+    background-color: #202124 !important;
+    box-shadow: none;
+    padding-top: 25px;
+}
+
+.navbar-brand{
+    color:white;
+}

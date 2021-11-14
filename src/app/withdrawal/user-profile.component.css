@@ -1,0 +1,17 @@
+.card .card-header-danger .card-icon, .card .card-header-danger .card-text, .card .card-header-danger:not(.card-header-icon):not(.card-header-text), .card.bg-danger, .card.card-rotate.bg-danger .front, .card.card-rotate.bg-danger .back {
+    background: linear-gradient(
+60deg, #340357, #340357);
+}
+
+.card{
+    background-color: #202020 !important;
+    color:white !important
+}
+
+.card .card-header.card-header-icon .card-title, .card .card-header.card-header-text .card-title {
+    color: white;
+}
+
+.text-primary {
+    color: white !important;
+}

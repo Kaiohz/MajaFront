@@ -1,0 +1,50 @@
+<div style="background-color:#202124" class="main-content">
+  <div class="container-fluid">
+      <div style="margin-left:45%;width:20%" class="row">
+        <button (click)="modalCron()" style="background-color: #340357;" mat-raised-button color="primary">
+            <i class="material-icons">restore</i>
+        </button>
+      </div>
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Adresses de retrait</h4>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                  <th>
+                                      Uuid
+                                  </th>
+                                  <th>
+                                      Adresse
+                                  </th>
+                                  <th>
+                                    Retrait
+                                </th>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let withdrawals of oResults.getValue()">
+                                      <td class="text-primary">
+                                        {{withdrawals.id}}
+                                      </td>
+                                      <td class="text-primary">
+                                        {{withdrawals.address}}
+                                      </td>
+                                      <td class="text-primary">
+                                        <button  (click)="modalWithdrawal()" style="background-color: #340357;" mat-raised-button color="warn">
+                                            <i class="material-icons">money</i>
+                                        </button>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

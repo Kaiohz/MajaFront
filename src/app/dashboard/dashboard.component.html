@@ -1,0 +1,139 @@
+<div style="background-color:#202124" class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                  <div class="card-header card-header-danger card-header-icon">
+                      <div class="card-icon">
+                          <i class="material-icons">account_balance_wallet</i>
+                      </div>
+                      <p class="card-category">Portefeuille</p>
+                      <h6 class="card-title">{{balanceBTC.getValue()}}
+                          <small>BTC</small>
+                      </h6>
+                      <h5 class="card-title">{{balance.getValue()}}
+                        <small>EUR</small>
+                    </h5>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                  <div class="card-header card-header-danger card-header-icon">
+                      <div class="card-icon">
+                          <i class="material-icons">trending_up</i>
+                      </div>
+                      <p class="card-category">Taux de change</p>
+                      <h6 class="card-title">1 BTC = {{(1/changeRate.getValue()).toFixed(2)}} €</h6>
+                      <h6 class="card-title">1 ETH = {{changeRateEth.getValue()}} €</h6>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                  <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">attach_money</i>
+                    </div>
+                      <p class="card-category">Rendement</p>
+                      <h6 class="card-title">{{profitability.getValue()}} BTC/24h</h6>
+                      <h6 class="card-title">{{euros.getValue().toFixed(2)}} €/24h</h6>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                  <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">money_off</i>
+                    </div>
+                      <p class="card-category">Impayé</p>
+                      <h6 class="card-title">{{unpaidAmount.getValue()}} BTC</h6>
+                      <h6 class="card-title">{{unpaidEuros.getValue()}} €</h6>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">power</i>
+                    </div>
+                    <p class="card-category">Puissance/Hashrate</p>
+                    <h6 class="card-title">P total : {{pTotal.getValue()}}W</h6>
+                    <h6 class="card-title">Hash total : {{hTotal.getValue()}} MH/s</h6>
+                    <h6 class="card-title">Elec total/J : {{eTotal.getValue()}} €</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">savings</i>
+                    </div>
+                    <p class="card-category">Revenus/personne</p>
+                    <h6 class="card-title">Hebdomadaire: {{(eurosWeek.getValue()/nbMiners).toFixed(2)}} €</h6>
+                    <h6 class="card-title">Mensuel : {{(eurosMonth.getValue()/nbMiners).toFixed(2)}} €</h6>
+                    <h6 class="card-title">Annuel: {{(eurosYear.getValue()/nbMiners).toFixed(2)}} €</h6>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div *ngFor="let rig of oRigs.getValue()" class="card">
+                        <div class="card-header card-header-danger">
+                            <h4 class="card-title">{{rig.name}} </h4>
+                            <h4 class="card-title">{{rig.profitability.toFixed(5)}} BTC/J </h4>
+                            <h4 class="card-title">{{(rig.profitability/changeRate.getValue()).toFixed(2)}} €/J</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="text-primary">
+                                        <th>
+                                            Carte
+                                        </th>
+                                        <th>
+                                            Puissance
+                                        </th>
+                                      <th>
+                                          elec/J
+                                      </th>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let devices of rig.devices">
+                                                <td class="text-primary">
+                                                    <div *ngIf="devices.powerUsage > 0">
+                                                        {{devices.name}}
+                                                        <br>
+                                                        {{devices.temperature % 65536}} °C
+                                                    </div>
+                                                </td>
+                                                <td  class="text-primary">
+                                                    <div *ngIf="devices.powerUsage > 0">
+                                                        {{devices.powerUsage}}W
+                                                        <br>
+                                                        {{devices.speeds[0].speed.substring(0,5)}} {{devices.speeds[0].displaySuffix}}/s
+                                                    </div>
+                                                </td>
+                                                <td  class="text-primary">
+                                                    <div *ngIf="devices.powerUsage > 0">
+                                                        {{(((24*devices.powerUsage)/1000)*0.17).toFixed(2)}} €
+                                                    </div>
+                                                </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>      
+  </div>
+</div>
