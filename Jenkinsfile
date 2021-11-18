@@ -8,19 +8,22 @@ pipeline {
     stages {
         stage('Install') {
             steps { 
+                echo '******** Install all dependancies ********'
                 sh 'npm install' 
             }
         }
 
         stage('Unit tests') {
             steps { 
-                sh 'npm test --progress false --watch false' 
+                echo '******** Launch all tests ********'
+                sh 'ng test --progress false --watch false' 
             }
         }
 
         stage('Build') {
             steps { 
-                sh 'npm build' 
+                echo '******** Build the app ********'
+                sh 'npm run build' 
             }
         }
     }
