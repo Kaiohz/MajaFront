@@ -6,12 +6,6 @@ pipeline {
     }
 
     stages {
-        stage('Where am i ') {
-            steps { 
-                sh 'pwd' 
-                sh 'ls'
-            }
-        }
         stage('Install') {
             steps { 
                 sh 'npm install' 
@@ -26,7 +20,7 @@ pipeline {
 
         stage('Build') {
             steps { 
-                sh 'npm run-script build' 
+                sh 'npm build' 
             }
         }
     }
