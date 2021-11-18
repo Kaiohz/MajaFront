@@ -15,10 +15,8 @@ pipeline {
         }
 
         stage('Build') {
-            steps{
-                sh 'export CHROME_BIN=/usr/bin/chromium-browser'
-            }
             steps { 
+                sh 'export CHROME_BIN=/usr/bin/chromium-browser'
                 sh 'npm run-script build' 
             }
         }
