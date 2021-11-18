@@ -6,7 +6,6 @@ pipeline {
     }
 
     stages {
-
         stage('Where am i ') {
             steps { 
                 sh 'pwd' 
@@ -21,7 +20,7 @@ pipeline {
 
         stage('Unit tests') {
             steps { 
-                sh 'npm run-script test' 
+                sh 'npm test' 
             }
         }
 
