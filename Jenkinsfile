@@ -1,5 +1,9 @@
 pipeline {
     agent any 
+    
+    environment {
+        CHROME_BIN"=/usr/bin/chromium-browser"
+    }
 
     stages {
 
@@ -17,7 +21,7 @@ pipeline {
 
         stage('Unit tests') {
             steps { 
-                sh 'export CHROME_BIN=/usr/bin/chromium-browser;npm run-script test' 
+                sh 'npm run-script test' 
             }
         }
 
