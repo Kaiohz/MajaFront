@@ -2,6 +2,13 @@ pipeline {
     agent any 
 
     stages {
+
+        stage('Where am i ') {
+            steps { 
+                sh 'pwd' 
+                sh 'ls'
+            }
+        }
         stage('Install') {
             steps { 
                 sh 'npm install' 
@@ -10,8 +17,7 @@ pipeline {
 
         stage('Unit tests') {
             steps { 
-                sh 'export CHROME_BIN=/usr/bin/chromium-browser'
-                sh 'npm run-script test' 
+                sh 'export CHROME_BIN=/usr/bin/chromium-browser;npm run-script test' 
             }
         }
 
