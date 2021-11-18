@@ -16,7 +16,7 @@ pipeline {
         stage('Unit tests') {
             steps { 
                 echo '******** Launch all tests ********'
-                sh 'ng test --progress false --watch false' 
+                sh 'npm test' 
             }
         }
 

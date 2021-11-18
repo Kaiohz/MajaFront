@@ -38,6 +38,10 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
+    captureTimeout: 10000,
+    browserDisconnectTolerance: 3,
+    browserDisconnectTimeout : 10000,
+    browserNoActivityTimeout : 10000,
     browsers: ['ChromeHeadlessNoSandbox'],
     customLaunchers: {
       ChromeHeadlessNoSandbox: {
