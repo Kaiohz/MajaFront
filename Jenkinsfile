@@ -14,7 +14,7 @@ pipeline {
 
         stage('Unit tests') {
             steps { 
-                sh 'npm test --progress false --watch fals' 
+                sh 'npm test --progress false --watch false' 
             }
         }
 
