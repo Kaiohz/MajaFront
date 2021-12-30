@@ -23,6 +23,14 @@ export class UserProfileComponent implements OnInit {
   breakpointWidth: number = 700;
   nbMiners: number = 5;
   private width = "400px"
+  percentages = new Map<string, string>([
+    ["e6db0a2f-d53a-4c61-afb5-d64604566691", "0.11"],
+    ["467c788e-b2a3-4019-86d0-770512bb4296", "0.11"],
+    ["f5b90c9b-5199-40fb-92cd-640eae600378","0.33"],
+    ["85870226-6556-4ca2-8632-c2af430e8b96","0.11"],
+    ["165c1ff4-fb2a-462a-92a8-51299ea5a8a6","0.33"]
+]);
+public wallet: BehaviorSubject<Number> = new BehaviorSubject<Number>(null);
 
   constructor(private niceHashService: NiceHashService,public dialog: MatDialog,private snackBar: MatSnackBar) { }
 
@@ -93,8 +101,7 @@ export class UserProfileComponent implements OnInit {
     this.niceHashService.getInfosWallet().subscribe({
       next: value => {
         var wallet = <Wallet>value
-        var shared = Number(wallet.totalBalance.substring(0,10))/this.nbMiners
-        this.niceHashService.sharedAmount.next(shared)
+        this.wallet.next(Number(wallet.totalBalance.substring(0,10)))
       },
       error: err => {
         console.log("Erreur communication api privée : "+err)
@@ -103,7 +110,8 @@ export class UserProfileComponent implements OnInit {
       complete: () => {
         var accounts = this.oResults.getValue();
         accounts.forEach(account => {
-          this.niceHashService.insertOrder(account.id,account.address,this.niceHashService.sharedAmount.getValue()).subscribe({
+          var amount = Number(this.wallet.getValue())*Number(this.percentages.get(account.id))
+          this.niceHashService.insertOrder(account.id,account.address,amount).subscribe({
             next: value => {     
               this.snackBar.open(MESSAGES.CronWithdrawalOk,"",{ panelClass: "maja-ok-snack-bar",duration: 2000} )
             },
