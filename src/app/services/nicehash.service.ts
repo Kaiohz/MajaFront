@@ -20,15 +20,15 @@ constructor(private http: HttpClient){
 } 
 
 public getInfosFromBtcAddress(): Observable<Object>{
-    return this.http.get(url.protocol+"192.168.1.33"+url.niceHashResource)
+    return this.http.get(url.protocol+window.location.hostname+url.niceHashResource)
 }
 
 public getWithdrawalAdresses(): Observable<Object>{
-    return this.http.get(url.protocol+"192.168.1.33"+url.withdrawals)
+    return this.http.get(url.protocol+window.location.hostname+url.withdrawals)
 }
 
 public getInfosWallet(): Observable<Object>{
-    return this.http.get(url.protocol+"192.168.1.33"+url.walletResource)
+    return this.http.get(url.protocol+window.location.hostname+url.walletResource)
 }
 
 public getChangeRate(): Observable<Object>{
@@ -40,11 +40,11 @@ public getChangeRateEth(): Observable<Object>{
 }
 
 public sendOrder(id:string,amount:Number): Observable<Object>{
-    return this.http.get(url.protocol+"192.168.1.33"+url.order+"/"+id+"/"+amount)
+    return this.http.get(url.protocol+window.location.hostname+url.order+"/"+id+"/"+amount)
 }
 
 public insertOrder(uuid:string,mail:string,amount: Number): Observable<Object>{
-    return this.http.get(url.protocol+"192.168.1.33"+url.insertOrder+"/"+uuid+"/"+mail+"/"+amount)
+    return this.http.get(url.protocol+window.location.hostname+url.insertOrder+"/"+uuid+"/"+mail+"/"+amount)
 }
 
 } 
