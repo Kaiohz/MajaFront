@@ -88,14 +88,10 @@ export class DashboardComponent implements OnInit {
                 this.pTotal.next(this.pTotal.getValue()+0)
                 this.hTotal.next(this.hTotal.getValue()+0)
                 this.eTotal.next(this.eTotal.getValue()+0)  
-              }else{
-                this.pTotal.next(this.pTotal.getValue()+device.powerUsage)
-                if(device.speeds[0] !== undefined){
+              }else if(device.powerUsage > 0 && device.speeds[0] != undefined){
                   this.hTotal.next(this.hTotal.getValue()+Number.parseInt(device.speeds[0].speed.substring(0,8)))
-                } else {
-                  this.hTotal.next(this.hTotal.getValue()+0)
-                }
-                this.eTotal.next(Number((this.eTotal.getValue()+(((24*device.powerUsage)/1000)*0.17)).toFixed(2)))  
+                  this.pTotal.next(this.pTotal.getValue()+device.powerUsage)
+                  this.eTotal.next(Number((this.eTotal.getValue()+(((24*device.powerUsage)/1000)*0.17)).toFixed(2)))  
               }
             })
           })
