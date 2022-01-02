@@ -47,4 +47,9 @@ public insertOrder(uuid:string,mail:string,amount: Number): Observable<Object>{
     return this.http.get(url.protocol+"192.168.1.33"+url.insertOrder+"/"+uuid+"/"+mail+"/"+amount)
 }
 
+public getIPAddress()  
+{  
+  return this.http.get("http://api.ipify.org/?format=json");  
+}  
+
 } 

@@ -41,6 +41,7 @@ export class DashboardComponent implements OnInit {
   dashboardClass: string = '';
   breakpointRig: number;
   breakpointWidth: number = 700;
+  //work as percentage, i'm lazy don't want to change variable name
   nbMiners: number = 5;
 
 
