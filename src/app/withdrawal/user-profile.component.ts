@@ -88,14 +88,11 @@ public wallet: BehaviorSubject<Number> = new BehaviorSubject<Number>(null);
         var adresses = []
         this.results.list.forEach( elem => {
           if(this.percentages.has(elem.id)){
-            console.log("Présent")
             adresses.push(this)
-          }else{
-            console.log("Absent")
           }
         })
-        this.results.list.filter(l => l.id===this.percentages.get(l.id))
-        this.oResults.next(this.results.list)
+        this.oResults.next(adresses)
+        adresses = []
       },
       error: err => {
         this.snackBar.open(MESSAGES.ApiBtcAddressFailed,"",{duration: 2000} )
