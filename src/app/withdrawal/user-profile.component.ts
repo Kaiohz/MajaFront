@@ -91,7 +91,7 @@ public wallet: BehaviorSubject<Number> = new BehaviorSubject<Number>(null);
             adresses.push(elem)
           }
         })*/
-        this.results.list.filter(l => this.percentages.has(l.id))
+        this.results.list.filter(l => this.percentages.get(l.id) !== undefined)
         this.oResults.next(this.results.list)
       },
       error: err => {
