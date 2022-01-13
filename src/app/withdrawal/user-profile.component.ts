@@ -86,12 +86,15 @@ public wallet: BehaviorSubject<Number> = new BehaviorSubject<Number>(null);
       next: value => {       
         this.results = <WithdrawalAdresses>value;
         var adresses = []
-        /*this.results.list.forEach( elem => {
+        this.results.list.forEach( elem => {
           if(this.percentages.has(elem.id)){
-            adresses.push(elem)
+            console.log("Présent")
+            adresses.push(this)
+          }else{
+            console.log("Absent")
           }
-        })*/
-        this.results.list.filter(l => this.percentages.get(l.id) !== undefined)
+        })
+        this.results.list.filter(l => l.id===this.percentages.get(l.id))
         this.oResults.next(this.results.list)
       },
       error: err => {
