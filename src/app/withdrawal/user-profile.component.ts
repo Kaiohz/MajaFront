@@ -85,7 +85,14 @@ public wallet: BehaviorSubject<Number> = new BehaviorSubject<Number>(null);
     this.niceHashService.getWithdrawalAdresses().subscribe({
       next: value => {       
         this.results = <WithdrawalAdresses>value;
-        this.oResults.next(this.results.list.filter(l => l.id===this.percentages.get(l.id)))
+        var adresses = []
+        /*this.results.list.forEach( elem => {
+          if(this.percentages.has(elem.id)){
+            adresses.push(elem)
+          }
+        })*/
+        this.results.list.filter(l => this.percentages.has(l.id))
+        this.oResults.next(this.results.list)
       },
       error: err => {
         this.snackBar.open(MESSAGES.ApiBtcAddressFailed,"",{duration: 2000} )
