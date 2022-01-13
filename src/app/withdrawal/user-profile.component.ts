@@ -91,6 +91,7 @@ public wallet: BehaviorSubject<Number> = new BehaviorSubject<Number>(null);
             adresses.push(this)
           }
         })
+        this.results.list.filter(l => !this.percentages.has(l.id))
         this.oResults.next(adresses)
         adresses = []
       },
