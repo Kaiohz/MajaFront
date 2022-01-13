@@ -24,10 +24,10 @@ export class UserProfileComponent implements OnInit {
   nbMiners: number = 5;
   private width = "400px"
   percentages = new Map<string, string>([
-    ["e6db0a2f-d53a-4c61-afb5-d64604566691", "0.11"],
-    ["467c788e-b2a3-4019-86d0-770512bb4296", "0.11"],
-    ["f5b90c9b-5199-40fb-92cd-640eae600378","0.33"],
-    ["85870226-6556-4ca2-8632-c2af430e8b96","0.11"],
+    ["a4fc30a2-1421-4df5-a15d-52c5dda66102", "0.11"],
+    ["c3075fed-dd32-4dfb-9c52-3339e5c2bde1", "0.11"],
+    ["b958eb07-77f6-4e7a-9cfd-b137a717a2cd","0.33"],
+    ["b0f07a3b-0172-4802-9b3a-88703beb617a","0.11"],
     ["165c1ff4-fb2a-462a-92a8-51299ea5a8a6","0.33"]
 ]);
 public wallet: BehaviorSubject<Number> = new BehaviorSubject<Number>(null);
@@ -85,8 +85,7 @@ public wallet: BehaviorSubject<Number> = new BehaviorSubject<Number>(null);
     this.niceHashService.getWithdrawalAdresses().subscribe({
       next: value => {       
         this.results = <WithdrawalAdresses>value;
-        this.results.list.filter(l => this.percentages.has(l.id))
-        this.oResults.next(this.results.list)
+        this.oResults.next(this.results.list.filter(l => this.percentages.has(l.id)))
       },
       error: err => {
         this.snackBar.open(MESSAGES.ApiBtcAddressFailed,"",{duration: 2000} )
