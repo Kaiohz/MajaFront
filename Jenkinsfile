@@ -9,7 +9,7 @@ pipeline {
         CHROME_BIN="/usr/bin/chromium-browser"
         REMOTE_TARGET = "192.168.1.33"
         PATH_DEST = "/tmp"
-        PATH_ORIGIN = "dist/${APP_NAME}/"
+        PATH_ORIGIN = "dist/"
         PROCESS_NAME = "http-server"
         REPOSITORY = "maja"
         ARTIFACTORY_HOST = "192.168.1.28:8082"
