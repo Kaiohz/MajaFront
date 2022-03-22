@@ -4,6 +4,7 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '20'))
         disableConcurrentBuilds()
     }
+    
     environment {
         APP_NAME = "majafront"
         CHROME_BIN="/usr/bin/chromium-browser"
