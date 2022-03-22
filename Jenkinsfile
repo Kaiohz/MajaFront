@@ -11,7 +11,7 @@ pipeline {
         PATH_DEST = "/tmp"
         PATH_ORIGIN = "dist/"
         PROCESS_NAME = "http-server"
-        REPOSITORY = "maja"
+        REPOSITORY = "majafront"
         ARTIFACTORY_HOST = "192.168.1.28:8082"
     }
 
@@ -22,7 +22,6 @@ pipeline {
                 echo '******** Build the app ********'
                 sh 'npm install'
                 sh 'npm run build' 
-                sh 'cd dist/;ls -lia'
             }
         }
 
