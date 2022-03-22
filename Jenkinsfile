@@ -29,7 +29,7 @@ pipeline {
         stage('Artifactory'){
             steps{
                 echo '******** Copy artifact to artifactory ********'
-                sh "tar -cf ${APP_NAME}.tar.gz ${PATH_ORIGIN}"
+                sh "tar -cf ${APP_NAME}-${GIT_COMMIT}.tar.gz ${PATH_ORIGIN}"
                 sh "curl -u admin:Password1 -T ${APP_NAME}.tar.gz http://${ARTIFACTORY_HOST}/artifactory/${REPOSITORY}/${APP_NAME}-${GIT_COMMIT}.tar.gz"
             }
         }
