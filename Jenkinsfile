@@ -15,7 +15,7 @@ pipeline {
         REPOSITORY = "majafront"
         ARTIFACTORY_HOST = "192.168.1.28:8082"
         VERSION = sh(script:'node -e "console.log(require(\'./package.json\').version);"',returnStdout: true).trim()
-        PACKAGE_NAME = "${APP_NAME}-${VERSION}-${GIT_COMMIT}.tgz"
+        PACKAGE_NAME = "${APP_NAME}-${VERSION}"
     }
 
     stages {
@@ -32,7 +32,7 @@ pipeline {
             steps{
                 echo '******** Copy artifact to artifactory ********'
                 sh "ls;chmod 777 ${PACKAGE_NAME}"
-                sh "curl -u admin:Password1 -T ${PACKAGE_NAME} http://${ARTIFACTORY_HOST}/artifactory/${REPOSITORY}/${PACKAGE_NAME}"
+                sh "curl -u admin:Password1 -T ${PACKAGE_NAME} http://${ARTIFACTORY_HOST}/artifactory/${REPOSITORY}/${PACKAGE_NAME}-${GIT_COMMIT}.tgz"
             }
         }
 
