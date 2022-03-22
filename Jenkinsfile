@@ -22,7 +22,7 @@ pipeline {
                 echo '******** Build the app ********'
                 sh 'npm install'
                 sh 'npm run build' 
-                sh 'ls -lia dist/'
+                sh 'cd dist/;ls -lia'
             }
         }
 
