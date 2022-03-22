@@ -31,7 +31,7 @@ pipeline {
         stage('Artifactory'){
             steps{
                 echo '******** Copy artifact to artifactory ********'
-                sh "chmod 777 ${PACKAGE_NAME}"
+                sh "ls;chmod 777 ${PACKAGE_NAME}"
                 sh "curl -u admin:Password1 -T ${PACKAGE_NAME} http://${ARTIFACTORY_HOST}/artifactory/${REPOSITORY}/${PACKAGE_NAME}"
             }
         }
