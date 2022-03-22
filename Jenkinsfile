@@ -4,7 +4,7 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '20'))
         disableConcurrentBuilds()
     }
-    
+
     environment {
         APP_NAME = "majafront"
         CHROME_BIN="/usr/bin/chromium-browser"
@@ -38,6 +38,7 @@ pipeline {
             steps { 
                 echo '******** Copy app to remote server ********'
                 sh "curl -u admin:zaaquymN54* -O 'http://${ARTIFACTORY_HOST}/artifactory/${REPOSITORY}/${APP_NAME}-${GIT_COMMIT}.tar.gz'"
+                sh "ls -lia"
                 sh "tar -xf ${APP_NAME}-${GIT_COMMIT}.tar.gz"
                 //in case server is already running
                 sh "sshpass -p zaaquymN54* ssh pi@${REMOTE_TARGET} 'if pgrep ${PROCESS_NAME} ; then pkill ${PROCESS_NAME}; fi'" 
