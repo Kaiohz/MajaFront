@@ -14,6 +14,8 @@ pipeline {
         PROCESS_NAME = "http-server"
         REPOSITORY = "majafront"
         ARTIFACTORY_HOST = "192.168.1.28:8082"
+        VERSION = sh(script:'node -e "console.log(require(\'./package.json\').version);"',returnStdout: true).trim()
+        PACKAGE_NAME = "${APP_NAME}-${VERSION}-${GIT_COMMIT}.tgz"
     }
 
     stages {
@@ -22,15 +24,14 @@ pipeline {
             steps { 
                 echo '******** Build the app ********'
                 sh 'npm install'
-                sh 'npm publish'
+                sh 'npm pack'
             }
         }
 
         stage('Artifactory'){
             steps{
                 echo '******** Copy artifact to artifactory ********'
-                //sh "tar -cf ${APP_NAME}.tar.gz ${PATH_ORIGIN}"
-                //sh "curl -u admin:Password1 -T ${APP_NAME}.tar.gz http://${ARTIFACTORY_HOST}/artifactory/${REPOSITORY}/${APP_NAME}-${GIT_COMMIT}.tar.gz"
+                sh "curl -u admin:Password1 -T ${PACKAGE_NAME} http://${ARTIFACTORY_HOST}/artifactory/${PACKAGE_NAME}"
             }
         }
 
