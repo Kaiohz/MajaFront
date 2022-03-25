@@ -43,6 +43,7 @@ export class DashboardComponent implements OnInit {
   breakpointWidth: number = 700;
   //work as percentage, i'm lazy don't want to change variable name
   nbMiners: number = 5;
+  energyPrice = 0.19
 
 
   constructor(private niceHashService: NiceHashService) { }
@@ -92,7 +93,7 @@ export class DashboardComponent implements OnInit {
               }else if(device.powerUsage > 0 && device.speeds[0] != undefined){
                   this.hTotal.next(this.hTotal.getValue()+Number.parseInt(device.speeds[0].speed.substring(0,8)))
                   this.pTotal.next(this.pTotal.getValue()+device.powerUsage)
-                  this.eTotal.next(Number((this.eTotal.getValue()+(((24*device.powerUsage)/1000)*0.19)).toFixed(2)))  
+                  this.eTotal.next(Number((this.eTotal.getValue()+(((24*device.powerUsage)/1000)*this.energyPrice)).toFixed(2)))  
               }
             })
           })
