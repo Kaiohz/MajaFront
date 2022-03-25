@@ -37,7 +37,7 @@ pipeline {
             steps { 
                 echo '******** Maj app on remote server ********'
                 //in case server is already running
-                sh "sshpass -p zaaquymN54* ssh pi@${REMOTE_TARGET} 'cd ${PATH_DEST};git pull'"
+                sh "sshpass -p zaaquymN54* ssh pi@${REMOTE_TARGET} 'cd ${PATH_DEST};git stash;git pull'"
             }
         }
     }
