@@ -37,8 +37,8 @@
                     </div>
                       <p class="card-category">Rendement</p>
                       <h6 class="card-title">{{euros.getValue().toFixed(2)}} €/24h</h6>
-                      <h6 class="card-title">{{euros.getValue().toFixed(2) * 30}} €/Mois</h6>
-                      <h6 class="card-title">{{euros.getValue().toFixed(2) * 365}} €/An</h6>
+                      <h6 class="card-title">{{(euros.getValue() * 30).toFixed(2)}} €/Mois</h6>
+                      <h6 class="card-title">{{(euros.getValue() * 365).toFixed(2)}} €/An</h6>
                   </div>
               </div>
           </div>
