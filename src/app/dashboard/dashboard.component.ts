@@ -72,7 +72,7 @@ export class DashboardComponent implements OnInit {
         console.log("test : ",value)
       },error: err => {
         console.log("Erreur communication api : "+err)
-      },
+      }
     })
   }
 
