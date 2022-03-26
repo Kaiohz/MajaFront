@@ -53,11 +53,11 @@ public getIPAddress()
 }
 
 public getAverageProfit(): Observable<Object>{
-    return this.http.get(url.averageProfit)
+    return this.http.get(url.profitAvg)
 }
 
 public getAverageHashrate(): Observable<Object>{
-    return this.http.get(url.averageHashrate)
+    return this.http.get(url.hashrateAvg)
 }
 
 } 
