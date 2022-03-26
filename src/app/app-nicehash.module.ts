@@ -39,7 +39,7 @@ export interface Wallet {
 }
 
 export interface Avg {
-  value:       string;
+  value:       String;
 }
 
 export interface NiceHashObject {
