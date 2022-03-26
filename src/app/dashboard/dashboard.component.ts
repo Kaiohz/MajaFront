@@ -71,9 +71,8 @@ export class DashboardComponent implements OnInit {
       next: value => {
         var profit = <Avg>value
         this.averageProfit.next(Number(profit.value))
-        console.log("test : ",profit.value)
       },error: err => {
-        console.log("Erreur communication api : "+err)
+        console.log("Erreur communication bdd : "+err)
       }
     })
 
@@ -81,9 +80,8 @@ export class DashboardComponent implements OnInit {
       next: value => {
         var hashrate = <Avg>value
         this.averageHashrate.next(Number(hashrate.value))
-        console.log("test : ",hashrate.value)
       },error: err => {
-        console.log("Erreur communication api : "+err)
+        console.log("Erreur communication bdd : "+err)
       }
     })
   }
