@@ -71,7 +71,7 @@ export class DashboardComponent implements OnInit {
     this.niceHashService.getAverageProfit().subscribe({
       next: value => {
         var profit = <Avg>value
-        this.averageProfit.next(profit.value.substring(0,8))
+        this.averageProfit.next(profit.value.toString().substring(0,8))
         var btc = Number(this.averageProfit.getValue())
         var eurosBtc = 1/this.changeRate.getValue()
         this.averageProfitEuros.next(btc*eurosBtc)
