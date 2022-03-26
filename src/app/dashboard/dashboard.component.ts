@@ -70,6 +70,7 @@ export class DashboardComponent implements OnInit {
     this.niceHashService.getAverageProfit().subscribe({
       next: value => {
         var profit = <Avg>value
+        console.log("Test : ",profit.value)
         this.averageProfit.next(Number(profit.value))
       },error: err => {
         console.log("Erreur communication bdd : "+err)
