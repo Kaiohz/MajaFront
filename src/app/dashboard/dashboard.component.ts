@@ -63,6 +63,7 @@ export class DashboardComponent implements OnInit {
   loadDashboard() {
     this.clearTotal()
     this.getInfosBtcAddress();
+    this.getAverages();
   }
 
   getAverages() {
