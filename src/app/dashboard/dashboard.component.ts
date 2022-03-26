@@ -36,6 +36,7 @@ export class DashboardComponent implements OnInit {
   hTotal: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   eTotal: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   averageProfit: BehaviorSubject<string> = new BehaviorSubject<string>("");
+  averageProfitEuros: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   averageHashrate: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   oRigs: BehaviorSubject<MiningRig[]> = new BehaviorSubject<MiningRig[]>(null)
   devices: BehaviorSubject<Device[]> = new BehaviorSubject<Device[]>([])
@@ -71,6 +72,7 @@ export class DashboardComponent implements OnInit {
       next: value => {
         var profit = <Avg>value
         this.averageProfit.next(profit.value)
+        this.averageProfitEuros.next(Number(this.averageProfit.getValue())*(1/this.changeRate.getValue()))
       },error: err => {
         console.log("Erreur communication bdd : "+err)
       }
