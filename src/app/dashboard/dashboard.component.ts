@@ -70,8 +70,18 @@ export class DashboardComponent implements OnInit {
     this.niceHashService.getAverageProfit().subscribe({
       next: value => {
         var profit = <Avg>value
-        this.averageProfit.next(10)
-        console.log("test : ",profit)
+        this.averageProfit.next(Number(profit.value))
+        console.log("test : ",profit.value)
+      },error: err => {
+        console.log("Erreur communication api : "+err)
+      }
+    })
+
+    this.niceHashService.getAverageHashrate().subscribe({
+      next: value => {
+        var hashrate = <Avg>value
+        this.averageHashrate.next(Number(hashrate.value))
+        console.log("test : ",hashrate.value)
       },error: err => {
         console.log("Erreur communication api : "+err)
       }
