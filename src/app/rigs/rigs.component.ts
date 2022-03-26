@@ -72,6 +72,17 @@ export class RigsComponent implements OnInit {
     this.eTotal.next(0);
   }
 
+  getChangeRate(){
+    this.niceHashService.getChangeRate().subscribe({
+      next: value => {
+        this.changeRate.next(<number>value)
+      },
+      error: err => {
+        console.log("Erreur communication api change rate : "+err)
+      }
+    })
+  }
+
   getInfosBtcAddress(){
     this.niceHashService.getInfosFromBtcAddress().subscribe({
       next: value => {
@@ -108,6 +119,9 @@ export class RigsComponent implements OnInit {
       },
       error: err => {
         console.log("Erreur communication api : "+err)
+      }, 
+      complete: () => {
+        this.getChangeRate()
       }
     });
   }
