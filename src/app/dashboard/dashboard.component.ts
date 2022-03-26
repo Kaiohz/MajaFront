@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit {
   pTotal: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   hTotal: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   eTotal: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  averageProfit: BehaviorSubject<string> = new BehaviorSubject<string>("");
+  averageProfit: BehaviorSubject<String> = new BehaviorSubject<String>("");
   averageProfitEuros: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   averageHashrate: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   oRigs: BehaviorSubject<MiningRig[]> = new BehaviorSubject<MiningRig[]>(null)
