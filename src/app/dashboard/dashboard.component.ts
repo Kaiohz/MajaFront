@@ -2,7 +2,7 @@ import { Component, OnInit, Inject  } from '@angular/core';
 import { NiceHashService } from 'app/services/nicehash.service';
 import * as Chartist from 'chartist';
 import { BehaviorSubject } from 'rxjs';
-import {Device, MiningRig, NiceHashObject, Wallet} from '../app-nicehash.module'
+import {Avg, Device, MiningRig, NiceHashObject, Wallet} from '../app-nicehash.module'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MESSAGES } from 'app/enum/messages.enum';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -69,7 +69,9 @@ export class DashboardComponent implements OnInit {
   getAverages() {
     this.niceHashService.getAverageProfit().subscribe({
       next: value => {
-        console.log("test : ",value)
+        var profit = <Avg>value
+        this.averageProfit.next(10)
+        console.log("test : ",profit)
       },error: err => {
         console.log("Erreur communication api : "+err)
       }

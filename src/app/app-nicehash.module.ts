@@ -38,6 +38,10 @@ export interface Wallet {
   btcRate:      number;
 }
 
+export interface Avg {
+  value:       string;
+}
+
 export interface NiceHashObject {
     minerStatuses: MinerStatuses
     rigTypes: RigTypes
