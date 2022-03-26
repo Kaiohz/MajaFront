@@ -17,6 +17,7 @@ import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/d
 import { NiceHashService } from 'app/services/nicehash.service';
 import { BddService } from 'app/services/bdd.service';
 import { MaterialModule } from 'app/material-module';
+import { RigsComponent } from 'app/rigs/rigs.component';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { MaterialModule } from 'app/material-module';
     TypographyComponent,
     DialogComponent,
     IconsComponent,
+    RigsComponent
   ],
   providers: [NiceHashService, { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA]
