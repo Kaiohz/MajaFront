@@ -71,7 +71,7 @@ export class DashboardComponent implements OnInit {
     this.niceHashService.getAverageProfit().subscribe({
       next: value => {
         var profit = <Avg>value
-        this.averageProfit.next(profit.value)
+        this.averageProfit.next(profit.value.substring(0,8))
         this.averageProfitEuros.next(Number(this.averageProfit.getValue())*(1/this.changeRate.getValue()))
       },error: err => {
         console.log("Erreur communication bdd : "+err)
