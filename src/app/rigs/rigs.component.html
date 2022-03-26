@@ -1,56 +1,62 @@
-<div class="main-content">
+<div style="background-color:#202124" class="main-content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
-                <div *ngFor="let rig of oRigs.getValue()" class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title">{{rig.name}} </h4>
-                        <h4 class="card-title">{{rig.profitability.toFixed(5)}} BTC/J </h4>
-                        <h4 class="card-title">{{(rig.profitability/changeRate.getValue()).toFixed(2)}} €/J</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead class="text-primary">
-                                    <th>
-                                        Carte
-                                    </th>
-                                    <th>
-                                        Puissance
-                                    </th>
-                                  <th>
-                                      elec/J
-                                  </th>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let devices of rig.devices">
-                                            <td *ngIf="devices.powerUsage > 0 && devices.speeds[0] != undefined" class="text-primary">
-                                                <div>
-                                                    {{devices.name}}
-                                                    <br>
-                                                    {{devices.temperature % 65536}} °C
-                                                </div>
-                                            </td>
-                                            <td *ngIf="devices.powerUsage > 0 && devices.speeds[0] != undefined" class="text-primary">
-                                                <div>
-                                                    {{devices.powerUsage}}W
-                                                </div>
-                                                <div>
-                                                    {{devices.speeds[0].speed.substring(0,5)}} {{devices.speeds[0].displaySuffix}}/s
-                                                </div>
-                                            </td>
-                                            <td *ngIf="devices.powerUsage > 0 && devices.speeds[0] != undefined"  class="text-primary">
-                                                <div>
-                                                    {{(((24*devices.powerUsage)/1000)*0.17).toFixed(2)}} €
-                                                </div>
-                                            </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="main-content">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-md-12">
+                      <div *ngFor="let rig of oRigs.getValue()" class="card">
+                          <div class="card-header card-header-danger">
+                              <h4 class="card-title">{{rig.name}} </h4>
+                              <h4 class="card-title">{{rig.profitability.toFixed(5)}} BTC/J </h4>
+                              <h4 class="card-title">{{(rig.profitability/changeRate.getValue()).toFixed(2)}} €/J</h4>
+                          </div>
+                          <div class="card-body">
+                              <div class="table-responsive">
+                                  <table class="table">
+                                      <thead class="text-primary">
+                                          <th>
+                                              Carte
+                                          </th>
+                                          <th>
+                                              Puissance
+                                          </th>
+                                        <th>
+                                            elec/J
+                                        </th>
+                                      </thead>
+                                      <tbody>
+                                          <tr *ngFor="let devices of rig.devices">
+                                                  <td *ngIf="devices.powerUsage > 0 && devices.speeds[0] != undefined" class="text-primary">
+                                                      <div>
+                                                          {{devices.name}}
+                                                          <br>
+                                                          {{devices.temperature % 65536}} °C
+                                                      </div>
+                                                  </td>
+                                                  <td *ngIf="devices.powerUsage > 0 && devices.speeds[0] != undefined" class="text-primary">
+                                                      <div>
+                                                          {{devices.powerUsage}}W
+                                                      </div>
+                                                      <div>
+                                                          {{devices.speeds[0].speed.substring(0,5)}} {{devices.speeds[0].displaySuffix}}/s
+                                                      </div>
+                                                  </td>
+                                                  <td *ngIf="devices.powerUsage > 0 && devices.speeds[0] != undefined"  class="text-primary">
+                                                      <div>
+                                                          {{(((24*devices.powerUsage)/1000)*0.17).toFixed(2)}} €
+                                                      </div>
+                                                  </td>
+                                          </tr>
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>      
     </div>
-  </div> 
+  </div>
+  
