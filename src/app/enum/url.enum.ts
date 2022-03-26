@@ -16,6 +16,8 @@ export const url = {
     orderKd: environment.port+environment.orderKd,
     insertOrder: environment.port+environment.insertOrder,
     insertOrderKd: environment.port+environment.insertOrderKd,
+    averageProfit: environment.port+environment.averageProfit,
+    averageHashrate: environment.port+environment.averageHashrate,
     blockchainChangeRate: "https://blockchain.info/tobtc?currency=EUR&value=1&cors=true",
     EthChangeRate: "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=EUR"
 } 

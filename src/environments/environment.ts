@@ -19,5 +19,7 @@ export const environment = {
   order: "/order",
   orderKd: "/orderkd",
   insertOrder: "/insertOrder",
-  insertOrderKd: "/insertOrderKd"
+  insertOrderKd: "/insertOrderKd",
+  averageProfit: "/averageProfit",
+  averageHashrate: "/averageHashrate"
 };

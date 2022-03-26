@@ -50,6 +50,14 @@ public insertOrder(uuid:string,mail:string,amount: Number): Observable<Object>{
 public getIPAddress()  
 {  
   return this.http.get("http://api.ipify.org/?format=json");  
-}  
+}
+
+public getAverageProfit(): Observable<Object>{
+    return this.http.get(url.averageProfit)
+}
+
+public getAverageHashrate(): Observable<Object>{
+    return this.http.get(url.averageHashrate)
+}
 
 } 

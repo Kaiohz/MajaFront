@@ -35,6 +35,8 @@ export class DashboardComponent implements OnInit {
   pTotal: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   hTotal: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   eTotal: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  averageProfit: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  averageHashrate: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   oRigs: BehaviorSubject<MiningRig[]> = new BehaviorSubject<MiningRig[]>(null)
   devices: BehaviorSubject<Device[]> = new BehaviorSubject<Device[]>([])
   breakpoint: number;
@@ -61,6 +63,16 @@ export class DashboardComponent implements OnInit {
   loadDashboard() {
     this.clearTotal()
     this.getInfosBtcAddress();
+  }
+
+  getAverages() {
+    this.niceHashService.getAverageProfit().subscribe({
+      next: value => {
+        console.log("test : ",value)
+      },error: err => {
+        console.log("Erreur communication api : "+err)
+      },
+    })
   }
 
   clearTotal(){
@@ -104,11 +116,9 @@ export class DashboardComponent implements OnInit {
         }
       },
       error: err => {
-        //this.snackBar.open(MESSAGES.ApiBtcAddressFailed,"",{duration: 2000} )
         console.log("Erreur communication api : "+err)
       },
       complete: () => {
-        //this.snackBar.open(MESSAGES.ApiBtcAddressSuccess,"",{ panelClass: "maja-ok-snack-bar",duration: 2000} )
         this.getInfosWallet()
       }
     });
@@ -124,12 +134,10 @@ export class DashboardComponent implements OnInit {
       },
       error: err => {
         console.log("Erreur communication api privée : "+err)
-        //this.snackBar.open(MESSAGES.ApiWalletFailed,"",{duration: 2000} )
       },
       complete: () => {
         this.getChangeRate();
         this.getChangeRateEth();
-        //this.snackBar.open(MESSAGES.ApiWalletSuccess,"",{ panelClass: "maja-ok-snack-bar",duration: 2000} )
       }
     })
   }
@@ -148,10 +156,6 @@ export class DashboardComponent implements OnInit {
       },
       error: err => {
         console.log("Erreur communication api change rate : "+err)
-        //this.snackBar.open(MESSAGES.ApiChangeRateFailed,"",{duration: 2000} )
-      },
-      complete: () => {
-        //this.snackBar.open(MESSAGES.ApiChangeRateSuccess,"",{ panelClass: "maja-ok-snack-bar",duration: 2000} )
       }
     })
   }
@@ -163,10 +167,6 @@ export class DashboardComponent implements OnInit {
       },
       error: err => {
         console.log("Erreur communication api change rate : "+err)
-        //this.snackBar.open(MESSAGES.ApiChangeRateFailed,"",{duration: 2000} )
-      },
-      complete: () => {
-        //this.snackBar.open(MESSAGES.ApiChangeRateSuccess,"",{ panelClass: "maja-ok-snack-bar",duration: 2000} )
       }
     })
   }
