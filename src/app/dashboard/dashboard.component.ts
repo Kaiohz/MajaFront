@@ -51,6 +51,55 @@ export class DashboardComponent implements OnInit {
 
   constructor(private niceHashService: NiceHashService) { }
 
+
+  profitChart(){
+      /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
+
+      const dataDailySalesChart: any = {
+        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+        series: [
+            [12, 17, 7, 17, 23, 18, 38,60,70,80,90,100]
+        ]
+    };
+
+    const optionsDailySalesChart: any = {
+        lineSmooth: Chartist.Interpolation.cardinal({
+            tension: 0
+        }),
+        low: 0,
+        high: 150, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+        chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
+    }
+
+    var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
+
+    this.startAnimationForLineChart(dailySalesChart);
+  }
+
+  hashrateChart(){
+    /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
+
+    const dataDailySalesChart: any = {
+      labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+      series: [
+          [12, 17, 7, 17, 23, 18, 38,60,70,80,90,100]
+      ]
+  };
+
+  const optionsDailySalesChart: any = {
+      lineSmooth: Chartist.Interpolation.cardinal({
+          tension: 0
+      }),
+      low: 0,
+      high: 150, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+      chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
+  }
+
+  var dailySalesChart = new Chartist.Line('#dailySalesChart2', dataDailySalesChart, optionsDailySalesChart);
+
+  this.startAnimationForLineChart(dailySalesChart);
+}
+
   startAnimationForLineChart(chart){
     let seq: any, delays: any, durations: any;
     seq = 0;
@@ -86,29 +135,6 @@ export class DashboardComponent implements OnInit {
 };
 
   ngOnInit() {
-          /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
-
-          const dataDailySalesChart: any = {
-            labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-            series: [
-                [12, 17, 7, 17, 23, 18, 38,60,70,80,90,100]
-            ]
-        };
-  
-       const optionsDailySalesChart: any = {
-            lineSmooth: Chartist.Interpolation.cardinal({
-                tension: 0
-            }),
-            low: 0,
-            high: 150, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-            chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
-        }
-  
-        var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
-  
-        this.startAnimationForLineChart(dailySalesChart);
-
-
     this.breakpoint = (window.innerWidth <= this.breakpointWidth) ? 3 : 5;
     this.breakpointRig =  (window.innerWidth <= this.breakpointWidth) ? 7 : 8;
     this.dashboardClass = this.breakpoint > 3 ? 'dashboard' : 'dashboard-smartphone' ;
@@ -209,6 +235,8 @@ export class DashboardComponent implements OnInit {
       complete: () => {
         this.getChangeRate();
         this.getChangeRateEth();
+        this.profitChart();
+        this.hashrateChart();
       }
     })
   }
