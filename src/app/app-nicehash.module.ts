@@ -47,6 +47,11 @@ export interface stats {
   timestamp: String;
 }
 
+export interface result {
+  result: stats[]
+}
+
+
 export interface NiceHashObject {
     minerStatuses: MinerStatuses
     rigTypes: RigTypes
