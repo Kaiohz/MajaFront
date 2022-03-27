@@ -56,7 +56,7 @@ export class DashboardComponent implements OnInit {
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
       const dataDailySalesChart: any = {
-        labels: labels,
+        labels: ["5 h"],
         series: [
             serie
         ]
@@ -80,7 +80,7 @@ export class DashboardComponent implements OnInit {
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
     const dataDailySalesChart: any = {
-      labels: labels,
+      labels: ["5 h"],
       series: [
           serie
       ]
