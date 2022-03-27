@@ -52,13 +52,13 @@ export class DashboardComponent implements OnInit {
   constructor(private niceHashService: NiceHashService) { }
 
 
-  profitChart(){
+  profitChart(serie,labels){
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
       const dataDailySalesChart: any = {
-        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+        labels: labels,
         series: [
-            [12, 17, 7, 17, 23, 18, 38,60,70,80,90,100]
+            serie
         ]
     };
 
@@ -177,9 +177,9 @@ export class DashboardComponent implements OnInit {
     this.niceHashService.getProfitStats().subscribe({
       next: value => {
         var profitStats = <result>value
-        profitStats.result.map( row => {
-          console.log("Test : ",row)
-        })
+        var serie = profitStats.result.map( row => row.value)
+        var labels = profitStats.result.map( row => row.timestamp)
+        this.profitChart(serie,labels);
       },error: err => {
         console.log("Erreur communication bdd stats : "+err)
       }
@@ -257,8 +257,6 @@ export class DashboardComponent implements OnInit {
       complete: () => {
         this.getChangeRate();
         this.getChangeRateEth();
-        this.profitChart();
-        this.hashrateChart();
       }
     })
   }
