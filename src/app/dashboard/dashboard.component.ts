@@ -67,7 +67,7 @@ export class DashboardComponent implements OnInit {
             tension: 0
         }),
         low: 0,
-        high: 45, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+        high: 70, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
         chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
     }
 
@@ -76,13 +76,13 @@ export class DashboardComponent implements OnInit {
     this.startAnimationForLineChart(dailySalesChart);
   }
 
-  hashrateChart(){
+  hashrateChart(serie,labels){
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
     const dataDailySalesChart: any = {
-      labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+      labels: labels,
       series: [
-          [12, 17, 7, 17, 23, 18, 38,60,70,80,90,100]
+          serie
       ]
   };
 
@@ -91,7 +91,7 @@ export class DashboardComponent implements OnInit {
           tension: 0
       }),
       low: 0,
-      high: 150, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+      high: 1300, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
       chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
   }
 
@@ -177,7 +177,6 @@ export class DashboardComponent implements OnInit {
       next: value => {
         var profitStats = <result>value
         var serie = profitStats.result.map( row => row.value).map( str => Number(str)).map( btc => btc*(1/this.changeRate.getValue()))
-        console.log("Test : ",serie)
         var labels = profitStats.result.map( row => row.timestamp)
         this.profitChart(serie,labels);
       },error: err => {
@@ -187,7 +186,10 @@ export class DashboardComponent implements OnInit {
 
     this.niceHashService.getHashrateStats().subscribe({
       next: value => {
-          //to do
+        var hashrateStats = <result>value
+        var serie = hashrateStats.result.map( row => row.value).map( str => Number(str))
+        var labels = hashrateStats.result.map( row => row.timestamp)
+        this.hashrateChart(serie,labels);
       },error: err => {
         console.log("Erreur communication bdd stats hashrate : "+err)
       }
