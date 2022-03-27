@@ -177,6 +177,7 @@ export class DashboardComponent implements OnInit {
       next: value => {
         var profitStats = <result>value
         var serie = profitStats.result.map( row => row.value).map( str => Number(str)).map( btc => btc/(1/this.changeRate.getValue()))
+        console.log("Test : ",serie)
         var labels = profitStats.result.map( row => row.timestamp)
         this.profitChart(serie,labels);
       },error: err => {
