@@ -47,10 +47,6 @@ export interface stats {
   timestamp: String;
 }
 
-export interface results {
-  rows: stats[]
-}
-
 export interface NiceHashObject {
     minerStatuses: MinerStatuses
     rigTypes: RigTypes

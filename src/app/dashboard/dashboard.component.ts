@@ -2,7 +2,7 @@ import { Component, OnInit, Inject  } from '@angular/core';
 import { NiceHashService } from 'app/services/nicehash.service';
 import * as Chartist from 'chartist';
 import { BehaviorSubject } from 'rxjs';
-import {Avg, Device, MiningRig, NiceHashObject, results, Wallet} from '../app-nicehash.module'
+import {Avg, Device, MiningRig, NiceHashObject, results, stats, Wallet} from '../app-nicehash.module'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MESSAGES } from 'app/enum/messages.enum';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -176,7 +176,7 @@ export class DashboardComponent implements OnInit {
   getStats() {
     this.niceHashService.getProfitStats().subscribe({
       next: value => {
-        var profitStats = <results>value
+        var profitStats = <stats[]>value
         console.log("Test : ",profitStats)
       },error: err => {
         console.log("Erreur communication bdd stats : "+err)
