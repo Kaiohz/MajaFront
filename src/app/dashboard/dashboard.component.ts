@@ -91,7 +91,7 @@ export class DashboardComponent implements OnInit {
           const dataDailySalesChart: any = {
             labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
             series: [
-                [12, 17, 7, 17, 23, 18, 38]
+                [12, 17, 7, 17, 23, 18, 38,60,70,80,90,100]
             ]
         };
   
@@ -108,7 +108,7 @@ export class DashboardComponent implements OnInit {
   
         this.startAnimationForLineChart(dailySalesChart);
 
-        
+
     this.breakpoint = (window.innerWidth <= this.breakpointWidth) ? 3 : 5;
     this.breakpointRig =  (window.innerWidth <= this.breakpointWidth) ? 7 : 8;
     this.dashboardClass = this.breakpoint > 3 ? 'dashboard' : 'dashboard-smartphone' ;
