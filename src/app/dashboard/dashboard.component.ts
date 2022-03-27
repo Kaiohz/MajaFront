@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit {
       const dataDailySalesChart: any = {
         labels: labels,
         series: [
-            serie
+            []
         ]
     };
 
@@ -67,7 +67,7 @@ export class DashboardComponent implements OnInit {
             tension: 0
         }),
         low: 0,
-        high: 150, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+        high: 0.001, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
         chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
     }
 
@@ -178,7 +178,6 @@ export class DashboardComponent implements OnInit {
       next: value => {
         var profitStats = <result>value
         var serie = profitStats.result.map( row => row.value).map( str => Number(str))
-        console.log("Tes : ",serie)
         var labels = profitStats.result.map( row => row.timestamp)
         this.profitChart(serie,labels);
       },error: err => {
