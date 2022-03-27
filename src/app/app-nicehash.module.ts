@@ -42,6 +42,15 @@ export interface Avg {
   value:       String;
 }
 
+export interface stats {
+  value:       String;
+  timestamp: String;
+}
+
+export interface results {
+  rows: stats[]
+}
+
 export interface NiceHashObject {
     minerStatuses: MinerStatuses
     rigTypes: RigTypes

@@ -19,5 +19,7 @@ export const url = {
     blockchainChangeRate: "https://blockchain.info/tobtc?currency=EUR&value=1&cors=true",
     EthChangeRate: "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=EUR",
     profitAvg: environment.port+"/averageProfit",
-    hashrateAvg: environment.port+"/averageHashrate"
+    hashrateAvg: environment.port+"/averageHashrate",
+    profitStats:  environment.port+"/profitStats",
+    hashrateStats:  environment.port+"/hashrateStats"
 } 
