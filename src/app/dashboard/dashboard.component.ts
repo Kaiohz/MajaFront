@@ -177,7 +177,7 @@ export class DashboardComponent implements OnInit {
     this.niceHashService.getProfitStats().subscribe({
       next: value => {
         var profitStats = <result>value
-        console.log("Test : ",profitStats)
+        console.log("Test : ",profitStats.result)
       },error: err => {
         console.log("Erreur communication bdd stats : "+err)
       }
