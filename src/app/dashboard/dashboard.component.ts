@@ -147,6 +147,7 @@ export class DashboardComponent implements OnInit {
     this.clearTotal()
     this.getInfosBtcAddress();
     this.getAverages();
+    this.getStats();
   }
 
   getAverages() {
