@@ -177,7 +177,7 @@ export class DashboardComponent implements OnInit {
     this.niceHashService.getProfitStats().subscribe({
       next: value => {
         var profitStats = <result>value
-        var serie = profitStats.result.map( row => row.value)
+        var serie = profitStats.result.map( row => row.value).map( str => Number(str))
         var labels = profitStats.result.map( row => row.timestamp)
         this.profitChart(serie,labels);
       },error: err => {
