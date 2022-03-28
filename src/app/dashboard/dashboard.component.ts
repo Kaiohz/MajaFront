@@ -176,7 +176,7 @@ export class DashboardComponent implements OnInit {
     this.niceHashService.getProfitStats().subscribe({
       next: value => {
         var profitStats = <result>value
-        var serie = profitStats.result.map( row => row.value).map( str => Number(str)).map( btc => btc*(1/this.changeRate.getValue()))
+        var serie = profitStats.result.map( row => row.value).map( str => Number(str)).map( btc => btc*(1/this.changeRate.getValue())).reverse()
         var labels = profitStats.result.map( row => row.timestamp)
         this.profitChart(serie,labels);
       },error: err => {
@@ -187,7 +187,7 @@ export class DashboardComponent implements OnInit {
     this.niceHashService.getHashrateStats().subscribe({
       next: value => {
         var hashrateStats = <result>value
-        var serie = hashrateStats.result.map( row => row.value).map( str => Number(str))
+        var serie = hashrateStats.result.map( row => row.value).map( str => Number(str)).reverse()
         var labels = hashrateStats.result.map( row => row.timestamp)
         this.hashrateChart(serie,labels);
       },error: err => {
