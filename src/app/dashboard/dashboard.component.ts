@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit {
       const dataDailySalesChart: any = {
         labels: [],
         series: [
-            serie.slice(0,serie.length-time)
+            serie.slice(-time)
         ]
     };
 
@@ -84,7 +84,7 @@ export class DashboardComponent implements OnInit {
     const dataDailySalesChart: any = {
       labels: [],
       series: [
-        serie.slice(0,serie.length-time)
+        serie.slice(-time)
       ]
   };
 
@@ -180,7 +180,7 @@ export class DashboardComponent implements OnInit {
       next: value => {
         var profitStats = <result>value
         var serie = profitStats.result.map( row => row.value).map( str => Number(str)).map( btc => btc*(1/this.changeRate.getValue())).reverse()
-        var labels = profitStats.result.map( row => row.timestamp)
+        var labels = profitStats.result.map( row => row.timestamp).reverse()
         this.profitChart(serie,labels,this.chartTime);
       },error: err => {
         console.log("Erreur communication bdd stats  profit : "+err)
@@ -194,7 +194,7 @@ export class DashboardComponent implements OnInit {
       next: value => {
         var hashrateStats = <result>value
         var serie = hashrateStats.result.map( row => row.value).map( str => Number(str)).reverse()
-        var labels = hashrateStats.result.map( row => row.timestamp)
+        var labels = hashrateStats.result.map( row => row.timestamp).reverse()
         this.hashrateChart(serie,labels,this.chartTimeHashrate);
       },error: err => {
         console.log("Erreur communication bdd stats hashrate : "+err)
