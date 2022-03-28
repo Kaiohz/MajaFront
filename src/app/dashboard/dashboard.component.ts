@@ -47,6 +47,7 @@ export class DashboardComponent implements OnInit {
   //work as percentage, i'm lazy don't want to change variable name
   nbMiners: number = 5;
   energyPrice = 0.19
+  chartTime: number = 36
 
 
   constructor(private niceHashService: NiceHashService) { }
@@ -55,11 +56,10 @@ export class DashboardComponent implements OnInit {
   profitChart(serie,labels){
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
-      console.log("Test : ",serie.slice(0,serie.length-(18*6)))
       const dataDailySalesChart: any = {
         labels: [],
         series: [
-            serie
+            serie.length-(this.chartTime)
         ]
     };
 
