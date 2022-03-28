@@ -47,8 +47,8 @@ export class DashboardComponent implements OnInit {
   //work as percentage, i'm lazy don't want to change variable name
   nbMiners: number = 5;
   energyPrice = 0.19
-  chartTime: number = 108
-  chartTimeHashrate: number = 108
+  chartTime: BehaviorSubject<number> = new BehaviorSubject<number>(36);
+  chartTimeHashrate: BehaviorSubject<number> = new BehaviorSubject<number>(36);
 
 
   constructor(private niceHashService: NiceHashService) { }
@@ -56,11 +56,11 @@ export class DashboardComponent implements OnInit {
 
   profitChart(serie,labels,time){
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
-
+      this.chartTime.next(time)
       const dataDailySalesChart: any = {
         labels: [],
         series: [
-            serie.slice(-time)
+            serie.slice(-this.chartTime.getValue())
         ]
     };
 
@@ -81,10 +81,11 @@ export class DashboardComponent implements OnInit {
   hashrateChart(serie,labels,time){
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
+    this.chartTimeHashrate.next(time)
     const dataDailySalesChart: any = {
       labels: [],
       series: [
-        serie.slice(-time)
+        serie.slice(-this.chartTimeHashrate.getValue())
       ]
   };
 
@@ -181,7 +182,7 @@ export class DashboardComponent implements OnInit {
         var profitStats = <result>value
         var serie = profitStats.result.map( row => row.value).map( str => Number(str)).map( btc => btc*(1/this.changeRate.getValue())).reverse()
         var labels = profitStats.result.map( row => row.timestamp).reverse()
-        this.profitChart(serie,labels,this.chartTime);
+        this.profitChart(serie,labels,this.chartTime.getValue());
       },error: err => {
         console.log("Erreur communication bdd stats  profit : "+err)
       }
@@ -195,7 +196,7 @@ export class DashboardComponent implements OnInit {
         var hashrateStats = <result>value
         var serie = hashrateStats.result.map( row => row.value).map( str => Number(str)).reverse()
         var labels = hashrateStats.result.map( row => row.timestamp).reverse()
-        this.hashrateChart(serie,labels,this.chartTimeHashrate);
+        this.hashrateChart(serie,labels,this.chartTimeHashrate.getValue());
       },error: err => {
         console.log("Erreur communication bdd stats hashrate : "+err)
       }
@@ -281,8 +282,8 @@ export class DashboardComponent implements OnInit {
         this.profitabilityEuros.next((this.profitability.getValue()/this.changeRate.getValue()).toFixed(2))
         this.balance.next((this.balanceBTC.getValue()/this.changeRate.getValue()).toFixed(2))
         this.getAverages();
-        this.getStatsProfit(this.chartTime);
-        this.getStatsHashrate(this.chartTimeHashrate)
+        this.getStatsProfit(this.chartTime.getValue());
+        this.getStatsHashrate(this.chartTimeHashrate.getValue())
       },
       error: err => {
         console.log("Erreur communication api change rate : "+err)
