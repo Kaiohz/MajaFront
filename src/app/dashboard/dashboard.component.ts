@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit {
       const dataDailySalesChart: any = {
         labels: [],
         series: [
-            serie.slice(-this.chartTime.getValue())
+            serie.slice(-time)
         ]
     };
 
@@ -85,7 +85,7 @@ export class DashboardComponent implements OnInit {
     const dataDailySalesChart: any = {
       labels: [],
       series: [
-        serie.slice(-this.chartTimeHashrate.getValue())
+        serie.slice(-time)
       ]
   };
 

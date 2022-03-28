@@ -105,7 +105,7 @@
                     <div class="ct-chart" id="dailySalesChart"></div>
                 </div>
                 <div class="card-body">
-                    <h4 class="card-title">Rendement € ({{chartTime.getValue()}} dernières heures)</h4>
+                    <h4 class="card-title">Rendement € ({{chartTime.getValue()/6}} dernières heures)</h4>
                     <button (click)=getStatsProfit(36) style="background-color: #340357;" mat-raised-button color="warn">
                         6 H
                     </button>
@@ -124,7 +124,7 @@
                     <div class="ct-chart" id="dailySalesChart2"></div>
                 </div>
                 <div class="card-body">
-                    <h4 class="card-title">Hashrate MH/S ({{chartTimeHashrate.getValue()}} dernières heures)</h4>
+                    <h4 class="card-title">Hashrate MH/S ({{chartTimeHashrate.getValue()/6}} dernières heures)</h4>
                     <button (click)=getStatsHashrate(36) style="background-color: #340357;" mat-raised-button color="warn">
                         6 H
                     </button>
