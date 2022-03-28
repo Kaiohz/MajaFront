@@ -82,7 +82,7 @@ export class DashboardComponent implements OnInit {
     const dataDailySalesChart: any = {
       labels: [],
       series: [
-          serie
+          serie.subarray(1,31)
       ]
   };
 
