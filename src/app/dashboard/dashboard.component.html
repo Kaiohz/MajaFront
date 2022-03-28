@@ -105,8 +105,8 @@
                     <div class="ct-chart" id="dailySalesChart"></div>
                 </div>
                 <div class="card-body">
-                    <h4 *ngIf="chartTimeHashrate.getValue() > 0 " class="card-title">Rendement € ({{chartTimeHashrate.getValue()/6}} dernières heures)</h4>
-                    <h4 *ngIf="chartTimeHashrate.getValue() < 1 " class="card-title">Rendement € (24 dernières heures)</h4>
+                    <h4 *ngIf="chartTime.getValue() > 0 " class="card-title">Rendement € ({{chartTime.getValue()/6}} dernières heures)</h4>
+                    <h4 *ngIf="chartTime.getValue() < 1 " class="card-title">Rendement € (24 dernières heures)</h4>
                     <button (click)=getStatsProfit(36) style="background-color: #340357;" mat-raised-button color="warn">
                         6 H
                     </button>
