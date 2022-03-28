@@ -176,7 +176,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getStatsProfit(time) {
-    this.chartTime = time
+    this.chartTime.next(time)
     this.niceHashService.getProfitStats().subscribe({
       next: value => {
         var profitStats = <result>value
@@ -190,7 +190,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getStatsHashrate(time) {
-    this.chartTimeHashrate = time
+    this.chartTimeHashrate.next(time)
     this.niceHashService.getHashrateStats().subscribe({
       next: value => {
         var hashrateStats = <result>value
