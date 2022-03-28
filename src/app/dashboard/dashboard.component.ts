@@ -47,8 +47,8 @@ export class DashboardComponent implements OnInit {
   //work as percentage, i'm lazy don't want to change variable name
   nbMiners: number = 5;
   energyPrice = 0.19
-  chartTime: number = 36
-  chartTimeHashrate: number = 36
+  chartTime: number = 108
+  chartTimeHashrate: number = 108
 
 
   constructor(private niceHashService: NiceHashService) { }
@@ -281,8 +281,8 @@ export class DashboardComponent implements OnInit {
         this.profitabilityEuros.next((this.profitability.getValue()/this.changeRate.getValue()).toFixed(2))
         this.balance.next((this.balanceBTC.getValue()/this.changeRate.getValue()).toFixed(2))
         this.getAverages();
-        this.getStatsProfit(36);
-        this.getStatsHashrate(36)
+        this.getStatsProfit(this.chartTime);
+        this.getStatsHashrate(this.chartTimeHashrate)
       },
       error: err => {
         console.log("Erreur communication api change rate : "+err)
