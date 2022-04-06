@@ -51,7 +51,6 @@ public wallet: BehaviorSubject<Number> = new BehaviorSubject<Number>(null);
     this.niceHashService.getChangeRate().subscribe({
       next: value => {
         this.changeRate.next(<number>value)
-        console.log("Test : ",value)
       },
       error: err => {
         console.log("Erreur communication api change rate : "+err)
