@@ -142,7 +142,7 @@ export class DashboardComponent implements OnInit {
     this.breakpointRig =  (window.innerWidth <= this.breakpointWidth) ? 7 : 8;
     this.dashboardClass = this.breakpoint > 3 ? 'dashboard' : 'dashboard-smartphone' ;
     this.loadDashboard();
-    setInterval(() => this.loadDashboard(), 300000);
+    setInterval(() => this.loadDashboard(), 180000);
   }
   
 
