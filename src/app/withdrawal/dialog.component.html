@@ -2,7 +2,7 @@
 
 <div *ngIf="data.password" mat-dialog-content>
   <p>Id du destinataire  {{data.id}}</p>
-  <p>Montant (BTC). Change rate : {{data.amount/data.changeRate}} €</p>
+  <p>Montant (BTC). ~ {{(data.amount/data.changeRate).toFixed(2)}} €</p>
   <mat-form-field >
     <mat-label>Montant</mat-label>
     <input class="input" matInput [(ngModel)]="data.amount">
