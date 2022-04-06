@@ -59,10 +59,10 @@ public wallet: BehaviorSubject<Number> = new BehaviorSubject<Number>(null);
     })
   }
   
- modalWithdrawal(id: String){
+ modalWithdrawal(id: String,changeRate: Number){
     this.dialog.open(DialogComponent,{
       width: this.width,
-      data: {id: id,password: true} 
+      data: {id: id,password: true, changeRate: changeRate} 
     }).afterClosed().subscribe( result  => {
       var tempResult = <string>result
       var id = tempResult.split(";")[0]
