@@ -59,9 +59,6 @@ public wallet: BehaviorSubject<Number> = new BehaviorSubject<Number>(null);
           error: err => {
             console.log("Erreur communication api : "+err)
             this.snackBar.open(MESSAGES.WithdrawalNOk,"",{duration: 2000} )
-          },
-          complete: () => {
-            
           }
         });
       }else{
