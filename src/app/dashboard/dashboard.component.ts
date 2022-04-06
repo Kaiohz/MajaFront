@@ -176,7 +176,6 @@ export class DashboardComponent implements OnInit {
   }
 
   getStatsProfit(time) {
-    console.log("Time : ",time)
     this.chartTime.next(time)
     this.niceHashService.getProfitStats().subscribe({
       next: value => {
