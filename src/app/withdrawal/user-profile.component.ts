@@ -47,7 +47,7 @@ public wallet: BehaviorSubject<Number> = new BehaviorSubject<Number>(null);
  modalWithdrawal(id: String){
     this.dialog.open(DialogComponent,{
       width: this.width,
-      data: {str: "",password: true} 
+      data: {id: id,password: true} 
     }).afterClosed().subscribe( result  => {
       var tempResult = <string>result
       var id = tempResult.split(";")[0]
@@ -70,17 +70,6 @@ public wallet: BehaviorSubject<Number> = new BehaviorSubject<Number>(null);
     })
   }
 
-  modalCron(){
-    this.dialog.open(DialogComponent,{
-      width: this.width,
-      data: {str: "",login: true} 
-    }).afterClosed().subscribe( result  => {
-      if(result==="valid"){
-        this.insertOrders()
-      }
-    })
-  }
-
   getWithdrawalAdresses(){
     this.niceHashService.getWithdrawalAdresses().subscribe({
       next: value => {       
@@ -96,38 +85,6 @@ public wallet: BehaviorSubject<Number> = new BehaviorSubject<Number>(null);
       }
     });
   }
-
-  insertOrders(){
-    this.niceHashService.getInfosWallet().subscribe({
-      next: value => {
-        var wallet = <Wallet>value
-        this.wallet.next(Number(wallet.totalBalance.substring(0,10)))
-      },
-      error: err => {
-        console.log("Erreur communication api privée : "+err)
-        this.snackBar.open(MESSAGES.ApiWalletFailed,"",{duration: 2000} )
-      },
-      complete: () => {
-        var accounts = this.oResults.getValue();
-        accounts.forEach(account => {
-          var amount = Number(this.wallet.getValue())*Number(this.percentages.get(account.id))
-          this.niceHashService.insertOrder(account.id,account.address,amount).subscribe({
-            next: value => {     
-              this.snackBar.open(MESSAGES.CronWithdrawalOk,"",{ panelClass: "maja-ok-snack-bar",duration: 2000} )
-            },
-            error: err => {
-              this.snackBar.open(MESSAGES.CronWithdrawlNok,"",{duration: 2000} )
-              console.log("Erreur communication api cron withdrawals "+err)
-            },
-            complete: () => {
-              this.snackBar.open(MESSAGES.ApiBtcAddressSuccess,"",{ panelClass: "maja-ok-snack-bar",duration: 2000} )
-            }
-          });
-        })
-      }
-    })
-  }
-
 }
 
 export interface DialogData {
