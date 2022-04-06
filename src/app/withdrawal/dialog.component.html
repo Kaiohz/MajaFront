@@ -1,7 +1,7 @@
 <!-- virement -->
 
 <div *ngIf="data.password" mat-dialog-content>
-  <p>Id du destinataire</p>
+  <p>Id du destinataire  {{data.id}}</p>
   <mat-form-field >
     <mat-label>ID</mat-label>
     <input class="input" matInput [(ngModel)]="data.id">
