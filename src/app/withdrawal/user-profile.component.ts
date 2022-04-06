@@ -45,7 +45,6 @@ public wallet: BehaviorSubject<Number> = new BehaviorSubject<Number>(null);
 
   
  modalWithdrawal(id: String){
-   console.log("Test : ",id)
     this.dialog.open(DialogComponent,{
       width: this.width,
       data: {id: id,password: true} 
