@@ -15,6 +15,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class UserProfileComponent implements OnInit {
 
+  changeRate: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+
   results:WithdrawalAdresses
   oResults: BehaviorSubject<ListEntity[]> = new BehaviorSubject<ListEntity[]>(null);
   breakpoint: number;
@@ -43,6 +45,18 @@ public wallet: BehaviorSubject<Number> = new BehaviorSubject<Number>(null);
     this.getWithdrawalAdresses()
   }
 
+
+  getChangeRate(){
+    this.niceHashService.getChangeRate().subscribe({
+      next: value => {
+        this.changeRate.next(<number>value)
+        console.log("Test : ",value)
+      },
+      error: err => {
+        console.log("Erreur communication api change rate : "+err)
+      }
+    })
+  }
   
  modalWithdrawal(id: String){
     this.dialog.open(DialogComponent,{
