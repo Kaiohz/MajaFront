@@ -1,12 +1,8 @@
 <!-- virement -->
 
 <div *ngIf="data.password" mat-dialog-content>
-  <p>Id du destinataire</p>
-  <mat-form-field >
-    <mat-label>ID</mat-label>
-    <input class="input" matInput [(ngModel)]="data.id">
-  </mat-form-field>
-  <p>Montant (BTC).</p>
+  <p>Id du destinataire  {{data.id}}</p>
+  <p>Montant (BTC). ~ {{(data.amount/data.changeRate).toFixed(2)}} €</p>
   <mat-form-field >
     <mat-label>Montant</mat-label>
     <input class="input" matInput [(ngModel)]="data.amount">
@@ -16,16 +12,5 @@
 </div>
 <div *ngIf="data.password" mat-dialog-actions>
   <button style="background-color: #011a02 !important; color:white;" mat-stroked-button class="maja-button" [mat-dialog-close]="data.id+';'+data.amount">Valider le virement.</button>
-  <button style="background-color: #5c0303 !important; color:white;" mat-stroked-button class="maja-button" (click)="onNoClick()">Annuler.</button>
-</div>
-
-<!--cron-->
-
-
-<div *ngIf="data.login" mat-dialog-content>
-  <p style="color:red;">En cliquant sur valider, vour programmez le virement pour l'ensemble des bénéficiaires sur base du montant disponible à validation.</p>
-</div>
-<div *ngIf="data.login" mat-dialog-actions>
-  <button style="background-color: #011a02 !important; color:white;" mat-stroked-button class="maja-button" [mat-dialog-close]="'valid'">Procéder au virement.</button>
   <button style="background-color: #5c0303 !important; color:white;" mat-stroked-button class="maja-button" (click)="onNoClick()">Annuler.</button>
 </div>

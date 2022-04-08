@@ -15,6 +15,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class UserProfileComponent implements OnInit {
 
+  changeRate: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+
   results:WithdrawalAdresses
   oResults: BehaviorSubject<ListEntity[]> = new BehaviorSubject<ListEntity[]>(null);
   breakpoint: number;
@@ -41,13 +43,25 @@ public wallet: BehaviorSubject<Number> = new BehaviorSubject<Number>(null);
 
   loadDashboard() {
     this.getWithdrawalAdresses()
+    this.getChangeRate()
   }
 
+
+  getChangeRate(){
+    this.niceHashService.getChangeRate().subscribe({
+      next: value => {
+        this.changeRate.next(<number>value)
+      },
+      error: err => {
+        console.log("Erreur communication api change rate : "+err)
+      }
+    })
+  }
   
- modalWithdrawal(id: String){
+ modalWithdrawal(id: String,changeRate: Number){
     this.dialog.open(DialogComponent,{
       width: this.width,
-      data: {str: "",password: true} 
+      data: {id: id,password: true, changeRate: changeRate, amount: 0} 
     }).afterClosed().subscribe( result  => {
       var tempResult = <string>result
       var id = tempResult.split(";")[0]
@@ -59,24 +73,10 @@ public wallet: BehaviorSubject<Number> = new BehaviorSubject<Number>(null);
           error: err => {
             console.log("Erreur communication api : "+err)
             this.snackBar.open(MESSAGES.WithdrawalNOk,"",{duration: 2000} )
-          },
-          complete: () => {
-            
           }
         });
       }else{
         this.snackBar.open(MESSAGES.WrongIdOrAmount,"",{duration: 2000} )
-      }
-    })
-  }
-
-  modalCron(){
-    this.dialog.open(DialogComponent,{
-      width: this.width,
-      data: {str: "",login: true} 
-    }).afterClosed().subscribe( result  => {
-      if(result==="valid"){
-        this.insertOrders()
       }
     })
   }
@@ -96,38 +96,6 @@ public wallet: BehaviorSubject<Number> = new BehaviorSubject<Number>(null);
       }
     });
   }
-
-  insertOrders(){
-    this.niceHashService.getInfosWallet().subscribe({
-      next: value => {
-        var wallet = <Wallet>value
-        this.wallet.next(Number(wallet.totalBalance.substring(0,10)))
-      },
-      error: err => {
-        console.log("Erreur communication api privée : "+err)
-        this.snackBar.open(MESSAGES.ApiWalletFailed,"",{duration: 2000} )
-      },
-      complete: () => {
-        var accounts = this.oResults.getValue();
-        accounts.forEach(account => {
-          var amount = Number(this.wallet.getValue())*Number(this.percentages.get(account.id))
-          this.niceHashService.insertOrder(account.id,account.address,amount).subscribe({
-            next: value => {     
-              this.snackBar.open(MESSAGES.CronWithdrawalOk,"",{ panelClass: "maja-ok-snack-bar",duration: 2000} )
-            },
-            error: err => {
-              this.snackBar.open(MESSAGES.CronWithdrawlNok,"",{duration: 2000} )
-              console.log("Erreur communication api cron withdrawals "+err)
-            },
-            complete: () => {
-              this.snackBar.open(MESSAGES.ApiBtcAddressSuccess,"",{ panelClass: "maja-ok-snack-bar",duration: 2000} )
-            }
-          });
-        })
-      }
-    })
-  }
-
 }
 
 export interface DialogData {
