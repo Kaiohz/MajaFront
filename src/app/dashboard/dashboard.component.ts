@@ -223,7 +223,7 @@ export class DashboardComponent implements OnInit {
         if(this.results.miningRigs !== undefined){
           this.results.miningRigs.map( rig => {
             rig.devices.forEach(device => {
-              if(device.powerUsage > 0){
+              if(device.powerUsage > 0 && device.status.enumName === "MINING"){
                 this.devices.getValue().push(device)
               }
               if(device === undefined){
