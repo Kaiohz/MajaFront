@@ -223,14 +223,11 @@ export class DashboardComponent implements OnInit {
         if(this.results.miningRigs !== undefined){
           this.results.miningRigs.map( rig => {
             rig.devices.forEach(device => {
-              if(device.powerUsage > 0 && device.status.enumName === "MINING"){
-                this.devices.getValue().push(device)
-              }
               if(device === undefined){
                 this.pTotal.next(this.pTotal.getValue()+0)
                 this.hTotal.next(this.hTotal.getValue()+0)
                 this.eTotal.next(this.eTotal.getValue()+0)  
-              }else if(device.powerUsage > 0 && device.speeds[0] != undefined){
+              }else if(device.powerUsage > 0 && device.speeds[0] != undefined && device.status.enumName === "MINING"){
                   this.hTotal.next(this.hTotal.getValue()+Number.parseInt(device.speeds[0].speed.substring(0,8)))
                   this.pTotal.next(this.pTotal.getValue()+device.powerUsage)
                   this.eTotal.next(Number((this.eTotal.getValue()+(((24*device.powerUsage)/1000)*this.energyPrice)).toFixed(2)))  
