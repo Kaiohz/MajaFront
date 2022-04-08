@@ -244,7 +244,6 @@ export class DashboardComponent implements OnInit {
         console.log("Erreur communication api : "+err)
       },
       complete: () => {
-        console.log("Test : ",this.devices.getValue())
         this.getInfosWallet()
       }
     });
