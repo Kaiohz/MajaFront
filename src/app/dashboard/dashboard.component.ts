@@ -150,6 +150,7 @@ export class DashboardComponent implements OnInit {
     this.clearTotal()
     this.getInfosBtcAddress();
     this.getAverages();
+    console.log("Test : ",this.hTotal.getValue())
   }
 
   getAverages() {
