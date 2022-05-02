@@ -77,9 +77,9 @@
                         <i class="material-icons">savings</i>
                     </div>
                     <p class="card-category">Revenus estimés</p>
-                    <h6 class="card-title">{{(euros.getValue() - (eTotal.getValue().toFixed(2)).toFixed(2))}} €/24h</h6>
-                    <h6 class="card-title">{{(eurosMonth.getValue() - (eTotal.getValue().toFixed(2))*30).toFixed(2))}} €/Mois</h6>
-                    <h6 class="card-title">{{(eurosYear.getValue() - (eTotal.getValue().toFixed(2))*365).toFixed(2))}} €/An</h6>
+                    <h6 class="card-title">{{revenues.getValue()}} €/24h</h6>
+                    <h6 class="card-title">{{revenues.getValue() * 30}} €/Mois</h6>
+                    <h6 class="card-title">{{revenues.getValue() * 365}} €/An</h6>
                 </div>
             </div>
         </div>
@@ -92,10 +92,6 @@
                     <p class="card-category">Moyenne rendement</p>
                     <h6 class="card-title">{{(averageHashrate.getValue()).toFixed(2)}} MH/S</h6>
                     <h6 class="card-title">{{averageProfit.getValue()}} BTC/24h</h6>
-                    <h6 class="card-title">{{averageProfitEuros.getValue().toFixed(2)}} €/24h</h6>
-                    <h6 class="card-title">{{(averageProfitEuros.getValue() * 30).toFixed(2)}} €/MOIS</h6>
-                    <h6 class="card-title">{{(averageProfitEuros.getValue() * 365).toFixed(2)}} €/AN</h6>
-                    <p class="card-category">Moyenne revenus</p>
                     <h6 class="card-title">{{averageProfitEuros.getValue().toFixed(2)}} €/24h</h6>
                     <h6 class="card-title">{{(averageProfitEuros.getValue() * 30).toFixed(2)}} €/MOIS</h6>
                     <h6 class="card-title">{{(averageProfitEuros.getValue() * 365).toFixed(2)}} €/AN</h6>

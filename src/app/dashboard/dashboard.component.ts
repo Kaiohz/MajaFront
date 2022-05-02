@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit {
   profitability: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   profitabilityEuros: BehaviorSubject<string> = new BehaviorSubject<string>("");
   euros: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  revenues: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   eurosMonth: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   eurosWeek: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   eurosYear: BehaviorSubject<number> = new BehaviorSubject<number>(0);
@@ -272,6 +273,8 @@ export class DashboardComponent implements OnInit {
       next: value => {
         this.changeRate.next(<number>value)
         this.euros.next((this.profitability.getValue()/this.changeRate.getValue()))
+        var revenue = this.euros.getValue() - this.eTotal.getValue()
+        this.revenues.next(Number(revenue.toFixed(2)))
         this.unpaidEuros.next((Number(this.unpaidAmount.getValue())/this.changeRate.getValue()).toFixed(2))
         this.eurosMonth.next(this.euros.getValue()*30)
         this.eurosWeek.next(this.euros.getValue()*7)
