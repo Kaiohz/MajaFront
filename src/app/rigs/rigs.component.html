@@ -4,6 +4,12 @@
           <div class="container-fluid">
               <div class="row">
                   <div class="col-md-12">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">{{devicesMining.getValue()}} Mining Graphic card(s). </h4>
+                        <h4 class="card-title">{{devicesOffline.getValue()}} Offline Graphic card(s). </h4>
+                        <h4 class="card-title">{{rigMining.getValue()}} Mining Rig(s). </h4>
+                        <h4 class="card-title">{{rigOffline.getValue()}} Offline Rigs(s). </h4>
+                    </div>
                       <div *ngFor="let rig of oRigs.getValue()" class="card">
                           <div class="card-header card-header-danger">
                               <h4 class="card-title">{{rig.name}}</h4>

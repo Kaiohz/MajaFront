@@ -76,6 +76,7 @@ export interface NiceHashObject {
   
   export interface MinerStatuses {
     MINING: number
+    OFFLINE: number
   }
   
   export interface RigTypes {
@@ -85,6 +86,7 @@ export interface NiceHashObject {
   export interface DevicesStatuses {
     DISABLED: number
     MINING: number
+    OFFLINE: number
   }
   
   export interface MiningRig {
