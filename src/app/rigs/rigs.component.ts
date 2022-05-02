@@ -86,6 +86,7 @@ export class RigsComponent implements OnInit {
   getInfosBtcAddress(){
     this.niceHashService.getInfosFromBtcAddress().subscribe({
       next: value => {
+        console.log("test : ",value)
         this.results = <NiceHashObject>value;
         if(this.results.totalProfitability !== undefined){
           this.profitability.next(Number(this.results.totalProfitability.toFixed(10)))
