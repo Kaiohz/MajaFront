@@ -151,6 +151,8 @@ export class DashboardComponent implements OnInit {
     this.clearTotal()
     this.getInfosBtcAddress();
     this.getAverages();
+    this.getStatsProfit(this.chartTime.getValue())
+    this.getStatsHashrate(this.chartTimeHashrate.getValue())
   }
 
   getAverages() {
@@ -280,8 +282,6 @@ export class DashboardComponent implements OnInit {
         this.profitabilityEuros.next((this.profitability.getValue()/this.changeRate.getValue()).toFixed(2))
         this.balance.next((this.balanceBTC.getValue()/this.changeRate.getValue()).toFixed(2))
         this.getAverages();
-        this.getStatsProfit(this.chartTime.getValue());
-        this.getStatsHashrate(this.chartTimeHashrate.getValue())
       },
       error: err => {
         console.log("Erreur communication api change rate : "+err)
