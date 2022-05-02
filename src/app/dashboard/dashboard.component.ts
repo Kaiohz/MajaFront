@@ -177,13 +177,12 @@ export class DashboardComponent implements OnInit {
   }
 
   getStatsProfit(time) {
-    this.chartTime.next(time)
     this.niceHashService.getProfitStats().subscribe({
       next: value => {
         var profitStats = <result>value
         var serie = profitStats.result.map( row => row.value).map( str => Number(str)).map( btc => btc*(1/this.changeRate.getValue())).reverse()
         var labels = profitStats.result.map( row => row.timestamp).reverse()
-        this.profitChart(serie,labels,this.chartTime.getValue());
+        this.profitChart(serie,labels,time);
       },error: err => {
         console.log("Erreur communication bdd stats  profit : "+err)
       }
@@ -191,13 +190,12 @@ export class DashboardComponent implements OnInit {
   }
 
   getStatsHashrate(time) {
-    this.chartTimeHashrate.next(time)
     this.niceHashService.getHashrateStats().subscribe({
       next: value => {
         var hashrateStats = <result>value
         var serie = hashrateStats.result.map( row => row.value).map( str => Number(str)).reverse()
         var labels = hashrateStats.result.map( row => row.timestamp).reverse()
-        this.hashrateChart(serie,labels,this.chartTimeHashrate.getValue());
+        this.hashrateChart(serie,labels,time);
       },error: err => {
         console.log("Erreur communication bdd stats hashrate : "+err)
       }
