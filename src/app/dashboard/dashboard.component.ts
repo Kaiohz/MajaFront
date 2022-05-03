@@ -216,13 +216,13 @@ export class DashboardComponent implements OnInit {
       next: value => {
         this.results = <NiceHashObject>value;
         this.devicesMining.next(this.results.devicesStatuses.MINING)
+        this.rigMining.next(this.results.minerStatuses.MINING)
+        this.rigOffline.next(this.results.minerStatuses.OFFLINE)
         if(this.results.devicesStatuses.OFFLINE>0){
-          this.devicesOffline.next(this.results.devicesStatuses.OFFLINE-1)
+          this.devicesOffline.next(this.results.devicesStatuses.OFFLINE-this.results.minerStatuses.OFFLINE)
         }else{
           this.devicesOffline.next(this.results.devicesStatuses.OFFLINE)
         }
-        this.rigMining.next(this.results.minerStatuses.MINING)
-        this.rigOffline.next(this.results.minerStatuses.OFFLINE)
         if(this.results.totalProfitability !== undefined){
           this.profitability.next(Number(this.results.totalProfitability.toFixed(10)))
         }else{
