@@ -216,8 +216,8 @@ export class DashboardComponent implements OnInit {
     this.niceHashService.getInfosFromBtcAddress().subscribe({
       next: value => {
         this.results = <NiceHashObject>value;
-        var next = new Date(this.results.nextPayoutTimestamp).getUTCMilliseconds()/1000
-        var now = new Date().getUTCMilliseconds()/1000
+        var next = new Date(this.results.nextPayoutTimestamp).getTime()/1000
+        var now = new Date().getTime()/1000
         var remainingTime = now - next
         console.log("Test :",remainingTime)
         var hoursRemaining = (remainingTime/60).toFixed(0)
