@@ -216,7 +216,10 @@ export class DashboardComponent implements OnInit {
     this.niceHashService.getInfosFromBtcAddress().subscribe({
       next: value => {
         this.results = <NiceHashObject>value;
-        this.nextPayout.next(this.results.nextPayoutTimestamp)
+        var next = new Date(this.results.nextPayoutTimestamp).getTime()
+        var now = new Date().getTime()
+        var remaining = new Date(next - now)
+        this.nextPayout.next(remaining.getHours()+"h"+remaining.getMinutes()+"m")
         this.devicesMining.next(this.results.devicesStatuses.MINING)
         this.rigMining.next(this.results.minerStatuses.MINING)
         this.rigOffline.next(this.results.minerStatuses.OFFLINE)
