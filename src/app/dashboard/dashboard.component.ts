@@ -218,7 +218,7 @@ export class DashboardComponent implements OnInit {
         this.results = <NiceHashObject>value;
         var next = new Date(this.results.nextPayoutTimestamp).getUTCMilliseconds()
         var now = new Date().getUTCMilliseconds()
-        var remainingTime = (next - now)
+        var remainingTime = (now - next)
         console.log("Test :",remainingTime)
         var hoursRemaining = (remainingTime/60).toFixed(0)
         this.nextPayout.next(hoursRemaining+"h test m")
