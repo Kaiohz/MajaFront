@@ -182,9 +182,6 @@ export class DashboardComponent implements OnInit {
         var profitStats = <result>value
         var serie = profitStats.result.map( row => row.value).map( str => Number(str)).map( btc => btc*(1/this.changeRate.getValue())).reverse()
         var labels = profitStats.result.map( row => row.timestamp).reverse()
-        console.log("Time : ",time)
-        console.log("Serie : ",serie)
-        console.log("Labels : ",labels)
         this.profitChart(serie,labels,time);
       },error: err => {
         console.log("Erreur communication bdd stats  profit : "+err)
