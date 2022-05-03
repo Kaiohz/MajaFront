@@ -219,6 +219,8 @@ export class DashboardComponent implements OnInit {
         var next = new Date(this.results.nextPayoutTimestamp).getTime()
         var now = new Date().getTime()
         var remaining = new Date(next - now)
+        console.log("remaining minutes : ",remaining.getMinutes())
+        console.log("remaining minutes : ",remaining.getTimezoneOffset())
         var hoursRemaining = ((remaining.getMinutes()-remaining.getTimezoneOffset())/60).toFixed(0)
         this.nextPayout.next(hoursRemaining+"h"+remaining.getMinutes()+"m")
         this.devicesMining.next(this.results.devicesStatuses.MINING)
