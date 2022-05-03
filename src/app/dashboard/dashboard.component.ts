@@ -184,6 +184,7 @@ export class DashboardComponent implements OnInit {
         var serie = profitStats.result.map( row => row.value).map( str => Number(str)).map( btc => btc*(1/this.changeRate.getValue())).reverse()
         var labels = profitStats.result.map( row => row.timestamp).reverse()
         this.profitChart(serie,labels,time);
+        this.chartTime.next(time)
       },error: err => {
         console.log("Erreur communication bdd stats  profit : "+err)
       }
@@ -197,6 +198,7 @@ export class DashboardComponent implements OnInit {
         var serie = hashrateStats.result.map( row => row.value).map( str => Number(str)).reverse()
         var labels = hashrateStats.result.map( row => row.timestamp).reverse()
         this.hashrateChart(serie,labels,time);
+        this.chartTimeHashrate.next(time)
       },error: err => {
         console.log("Erreur communication bdd stats hashrate : "+err)
       }
