@@ -218,9 +218,9 @@ export class DashboardComponent implements OnInit {
         this.results = <NiceHashObject>value;
         var next = new Date(this.results.nextPayoutTimestamp).getUTCMilliseconds()
         var now = new Date().getUTCMilliseconds()
-        var remaining = new Date(next - now)
-        var hoursRemaining = ((remaining.getUTCMilliseconds()-remaining.getTimezoneOffset()*60000)).toFixed(0)
-        this.nextPayout.next(hoursRemaining+"h"+remaining.getUTCMinutes()+"m")
+        var minutesRemaining = (next - now)*60000
+        var hoursRemaining = (minutesRemaining/60).toFixed(0)
+        this.nextPayout.next(hoursRemaining+"h"+minutesRemaining+"m")
         this.devicesMining.next(this.results.devicesStatuses.MINING)
         this.rigMining.next(this.results.minerStatuses.MINING)
         this.rigOffline.next(this.results.minerStatuses.OFFLINE)
