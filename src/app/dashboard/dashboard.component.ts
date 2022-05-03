@@ -154,7 +154,6 @@ export class DashboardComponent implements OnInit {
   loadDashboard() {
     this.clearTotal()
     this.getInfosBtcAddress();
-    this.getAverages();
   }
 
   getAverages() {
@@ -292,6 +291,7 @@ export class DashboardComponent implements OnInit {
         console.log("Erreur communication api change rate : "+err)
       }
       ,complete: () => {
+        this.getAverages();
         this.getStatsProfit(this.chartTime.getValue())
         this.getStatsHashrate(this.chartTimeHashrate.getValue())
       }
