@@ -61,7 +61,6 @@ export class DashboardComponent implements OnInit {
 
   profitChart(serie,labels,time){
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
-      this.chartTime.next(time)
       const dataDailySalesChart: any = {
         labels: [],
         series: [
@@ -86,7 +85,6 @@ export class DashboardComponent implements OnInit {
   hashrateChart(serie,labels,time){
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
-    this.chartTimeHashrate.next(time)
     const dataDailySalesChart: any = {
       labels: [],
       series: [
