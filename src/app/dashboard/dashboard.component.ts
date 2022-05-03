@@ -45,6 +45,7 @@ export class DashboardComponent implements OnInit {
   devicesOffline: BehaviorSubject<Number> = new BehaviorSubject<Number>(0)
   rigMining: BehaviorSubject<Number> = new BehaviorSubject<Number>(0)
   rigOffline: BehaviorSubject<Number> = new BehaviorSubject<Number>(0)
+  nextPayout: BehaviorSubject<string> = new BehaviorSubject<string>("")
   breakpoint: number;
   dashboardClass: string = '';
   breakpointRig: number;
@@ -215,6 +216,7 @@ export class DashboardComponent implements OnInit {
     this.niceHashService.getInfosFromBtcAddress().subscribe({
       next: value => {
         this.results = <NiceHashObject>value;
+        this.nextPayout.next(this.results.nextPayoutTimestamp)
         this.devicesMining.next(this.results.devicesStatuses.MINING)
         this.rigMining.next(this.results.minerStatuses.MINING)
         this.rigOffline.next(this.results.minerStatuses.OFFLINE)
