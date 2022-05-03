@@ -222,6 +222,7 @@ export class DashboardComponent implements OnInit {
         var minutes  = remainingTime/60
         console.log("minutes : ",minutes)
         var hours = minutes/60
+        console.log("hours :",hours)
         this.nextPayout.next(hours.toFixed(0)+"h "+minutes.toFixed(0)+" m")
         this.devicesMining.next(this.results.devicesStatuses.MINING)
         this.rigMining.next(this.results.minerStatuses.MINING)
