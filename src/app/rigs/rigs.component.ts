@@ -40,10 +40,6 @@ export class RigsComponent implements OnInit {
   averageHashrate: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   oRigs: BehaviorSubject<MiningRig[]> = new BehaviorSubject<MiningRig[]>(null)
   devices: BehaviorSubject<Device[]> = new BehaviorSubject<Device[]>([])
-  devicesMining: BehaviorSubject<Number> = new BehaviorSubject<Number>(0)
-  devicesOffline: BehaviorSubject<Number> = new BehaviorSubject<Number>(0)
-  rigMining: BehaviorSubject<Number> = new BehaviorSubject<Number>(0)
-  rigOffline: BehaviorSubject<Number> = new BehaviorSubject<Number>(0)
   breakpoint: number;
   dashboardClass: string = '';
   breakpointRig: number;
@@ -91,10 +87,6 @@ export class RigsComponent implements OnInit {
     this.niceHashService.getInfosFromBtcAddress().subscribe({
       next: value => {
         this.results = <NiceHashObject>value;
-        this.devicesMining.next(this.results.devicesStatuses.MINING)
-        this.devicesOffline.next(this.results.devicesStatuses.OFFLINE)
-        this.rigMining.next(this.results.minerStatuses.MINING)
-        this.rigOffline.next(this.results.minerStatuses.OFFLINE)
         if(this.results.totalProfitability !== undefined){
           this.profitability.next(Number(this.results.totalProfitability.toFixed(10)))
         }else{
