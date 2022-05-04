@@ -81,6 +81,7 @@ export class DashboardComponent implements OnInit {
     var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
 
     this.startAnimationForLineChart(dailySalesChart);
+    console.log("Test : ",serie)
   }
 
   hashrateChart(serie,labels,time){
@@ -200,7 +201,6 @@ export class DashboardComponent implements OnInit {
         var labels = hashrateStats.result.map( row => row.timestamp).reverse()
         this.hashrateChart(serie,labels,time);
         this.chartTimeHashrate.next(time)
-        console.log("Test : ",serie)
       },error: err => {
         console.log("Erreur communication bdd stats hashrate : "+err)
       }
