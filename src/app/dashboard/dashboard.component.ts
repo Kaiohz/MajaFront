@@ -105,7 +105,6 @@ export class DashboardComponent implements OnInit {
   var dailySalesChart = new Chartist.Line('#dailySalesChart2', dataDailySalesChart, optionsDailySalesChart);
 
   this.startAnimationForLineChart(dailySalesChart);
-  console.log("Test : ",serie)
 }
 
   startAnimationForLineChart(chart){
