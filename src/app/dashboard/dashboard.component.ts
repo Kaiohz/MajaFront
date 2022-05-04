@@ -195,6 +195,7 @@ export class DashboardComponent implements OnInit {
   getStatsHashrate(time) {  
     this.niceHashService.getHashrateStats().subscribe({
       next: value => {
+        console.log("Test : ",value)
         var hashrateStats = <result>value
         var serie = hashrateStats.result.map( row => row.value).map( str => Number(str)).reverse()
         var labels = hashrateStats.result.map( row => row.timestamp).reverse()
