@@ -314,7 +314,7 @@ export class DashboardComponent implements OnInit {
   getChangeRateEth(){
     this.niceHashService.getChangeRateEth().subscribe({
       next: value => {
-        this.changeRateEth.next(<number>value['EUR'])
+        this.changeRateEth.next(<number>value)
       },
       error: err => {
         console.log("Erreur communication api change rate : "+err)
