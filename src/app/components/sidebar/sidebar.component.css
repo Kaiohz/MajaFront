@@ -5,3 +5,7 @@
 p{
     color:white;
 }
+
+.sidebar[data-color=danger] li.active > a {
+    background-color: #340357 !important;
+}
