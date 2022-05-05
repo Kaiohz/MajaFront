@@ -1,6 +1,6 @@
 <div style="background-color:#202124" class="main-content">
     <div *ngFor="let rig of oRigs.getValue()" class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-6">
             <div class="card card-chart">
                 <div class="card-header card-header-danger">
                     <h4 class="card-title">{{rig.name}}</h4>
@@ -26,6 +26,11 @@
             </div>
         </div>
         <div class="col-lg-6">
+            <div class="card card-chart">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title">{{rig.name}}</h4>
+                </div>
+            </div>
             <div class="card card-chart">
                 <div class="card-header card-header-success">
                     <div class="ct-chart" id="{{ rig.name }}Hashrate"></div>
