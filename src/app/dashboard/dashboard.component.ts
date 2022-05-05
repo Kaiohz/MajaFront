@@ -289,7 +289,7 @@ export class DashboardComponent implements OnInit {
   getChangeRate(){
     this.niceHashService.getChangeRate().subscribe({
       next: value => {
-        this.changeRate.next(<number>value)
+        this.changeRate.next(<number>value['value'])
         this.euros.next((this.profitability.getValue()/this.changeRate.getValue()))
         var revenue = this.euros.getValue() - this.eTotal.getValue()
         this.revenues.next(Number(revenue.toFixed(2)))
