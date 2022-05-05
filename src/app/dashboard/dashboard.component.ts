@@ -199,6 +199,7 @@ export class DashboardComponent implements OnInit {
         var serie = hashrateStats.result.map( row => row.value).map( str => Number(str)).reverse()
         var labels = hashrateStats.result.map( row => row.timestamp).reverse()
         this.hashrateChart(serie,labels,time);
+        console.log("Test : ",this.chartTimeHashrate.getValue())
         this.chartTimeHashrate.next(time)
       },error: err => {
         console.log("Erreur communication bdd stats hashrate : "+err)
