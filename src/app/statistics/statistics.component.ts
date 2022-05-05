@@ -78,7 +78,7 @@ export class StatisticsComponent implements OnInit {
         chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
     }
 
-    var dailySalesChart = new Chartist.Line(rig, dataDailySalesChart, optionsDailySalesChart);
+    var dailySalesChart = new Chartist.Line("#"+rig, dataDailySalesChart, optionsDailySalesChart);
 
     this.startAnimationForLineChart(dailySalesChart);
   }
@@ -102,7 +102,7 @@ export class StatisticsComponent implements OnInit {
       chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
   }
 
-  var dailySalesChart = new Chartist.Line(rig+"Hashrate", dataDailySalesChart, optionsDailySalesChart);
+  var dailySalesChart = new Chartist.Line("#"+rig+"Hashrate", dataDailySalesChart, optionsDailySalesChart);
 
   this.startAnimationForLineChart(dailySalesChart);
 }
