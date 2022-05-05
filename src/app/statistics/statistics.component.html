@@ -5,7 +5,7 @@
                 <div class="card-header card-header-success">
                     <div class="ct-chart" id="dailySalesChart"></div>
                 </div>
-                <div class="card-body">
+                <div *ngFor="let rig of oRigs.getValue()" class="card-body">
                     <h4 *ngIf="chartTime.getValue() > 0 " class="card-title">Rendement € ({{chartTime.getValue()/6}} dernières heures)</h4>
                     <h4 *ngIf="chartTime.getValue() < 1 " class="card-title">Rendement € (24 dernières heures)</h4>
                     <button (click)=getStatsProfit(36) style="background-color: #340357;" mat-raised-button color="warn">
@@ -15,26 +15,6 @@
                         12 H
                     </button>
                     <button (click)=getStatsProfit(0) style="background-color: #340357;" mat-raised-button color="warn">
-                        24 H
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-12">
-            <div class="card card-chart">
-                <div class="card-header card-header-success">
-                    <div class="ct-chart" id="dailySalesChart2"></div>
-                </div>
-                <div class="card-body">
-                    <h4 *ngIf="chartTimeHashrate.getValue() > 0 " class="card-title">Hashrate MH/S ({{chartTimeHashrate.getValue()/6}} dernières heures)</h4>
-                    <h4 *ngIf="chartTimeHashrate.getValue() < 1 " class="card-title">Hashrate MH/S (24 dernières heures)</h4>
-                    <button (click)=getStatsHashrate(36) style="background-color: #340357;" mat-raised-button color="warn">
-                        6 H
-                    </button>
-                    <button (click)=getStatsHashrate(72) style="background-color: #340357;" mat-raised-button color="warn">
-                        12 H
-                    </button>
-                    <button (click)=getStatsHashrate(0) style="background-color: #340357;" mat-raised-button color="warn">
                         24 H
                     </button>
                 </div>
