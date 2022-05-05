@@ -1,11 +1,11 @@
 <div style="background-color:#202124" class="main-content">
     <div class="row">
         <div class="col-lg-12">
-            <div class="card card-chart">
+            <div *ngFor="let rig of oRigs.getValue()" class="card card-chart">
                 <div class="card-header card-header-success">
-                    <div class="ct-chart" id="dailySalesChart"></div>
+                    <div class="ct-chart" id="{{ rig.name }}"></div>
                 </div>
-                <div *ngFor="let rig of oRigs.getValue()" class="card-body">
+                <div class="card-body">
                     <h4 *ngIf="chartTime.getValue() > 0 " class="card-title">Rendement € ({{chartTime.getValue()/6}} dernières heures)</h4>
                     <h4 *ngIf="chartTime.getValue() < 1 " class="card-title">Rendement € (24 dernières heures)</h4>
                     <button (click)=getStatsProfit(36) style="background-color: #340357;" mat-raised-button color="warn">

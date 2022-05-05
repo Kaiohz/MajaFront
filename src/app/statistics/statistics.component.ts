@@ -60,7 +60,7 @@ export class StatisticsComponent implements OnInit {
   constructor(private niceHashService: NiceHashService) { }
 
 
-  profitChart(serie,labels,time){
+  profitChart(serie,labels,time,rig){
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
       const dataDailySalesChart: any = {
         labels: [],
@@ -78,12 +78,12 @@ export class StatisticsComponent implements OnInit {
         chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
     }
 
-    var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
+    var dailySalesChart = new Chartist.Line(rig, dataDailySalesChart, optionsDailySalesChart);
 
     this.startAnimationForLineChart(dailySalesChart);
   }
 
-  hashrateChart(serie,labels,time){
+  hashrateChart(serie,labels,time,rig){
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
     const dataDailySalesChart: any = {
@@ -102,7 +102,7 @@ export class StatisticsComponent implements OnInit {
       chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
   }
 
-  var dailySalesChart = new Chartist.Line('#dailySalesChart2', dataDailySalesChart, optionsDailySalesChart);
+  var dailySalesChart = new Chartist.Line(rig+"Hashrate", dataDailySalesChart, optionsDailySalesChart);
 
   this.startAnimationForLineChart(dailySalesChart);
 }
@@ -178,13 +178,13 @@ export class StatisticsComponent implements OnInit {
     })
   }
 
-  getStatsProfit(time) {
+  getStatsProfit(time,rig) {
     this.niceHashService.getProfitStats().subscribe({
       next: value => {
         var profitStats = <result>value
         var serie = profitStats.result.map( row => row.value).map( str => Number(str)).map( btc => btc*(1/this.changeRate.getValue())).reverse()
         var labels = profitStats.result.map( row => row.timestamp).reverse()
-        this.profitChart(serie,labels,time);
+        this.profitChart(serie,labels,time,rig);
         this.chartTime.next(time)
         console.log("Test profit : ",this.chartTime.getValue())
       },error: err => {
@@ -193,13 +193,13 @@ export class StatisticsComponent implements OnInit {
     })
   }
 
-  getStatsHashrate(time) {  
+  getStatsHashrate(time,rig) {  
     this.niceHashService.getHashrateStats().subscribe({
       next: value => {
         var hashrateStats = <result>value
         var serie = hashrateStats.result.map( row => row.value).map( str => Number(str)).reverse()
         var labels = hashrateStats.result.map( row => row.timestamp).reverse()
-        this.hashrateChart(serie,labels,time);
+        this.hashrateChart(serie,labels,time,rig);
         this.chartTimeHashrate.next(time)
         console.log("Test : ",this.chartTimeHashrate.getValue())
       },error: err => {
@@ -305,8 +305,10 @@ export class StatisticsComponent implements OnInit {
       }
       ,complete: () => {
         this.getAverages();
-        this.getStatsProfit(this.chartTime.getValue())
-        this.getStatsHashrate(this.chartTimeHashrate.getValue())
+        this.oRigs.getValue().forEach( rig => {
+          this.getStatsProfit(this.chartTime.getValue(),rig.name)
+          this.getStatsHashrate(this.chartTimeHashrate.getValue(),rig.name)
+        })
       }
     })
   }
