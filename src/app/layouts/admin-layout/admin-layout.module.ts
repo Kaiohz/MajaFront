@@ -18,6 +18,7 @@ import { NiceHashService } from 'app/services/nicehash.service';
 import { BddService } from 'app/services/bdd.service';
 import { MaterialModule } from 'app/material-module';
 import { RigsComponent } from 'app/rigs/rigs.component';
+import { StatisticsComponent } from 'app/statistics/statistics.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { RigsComponent } from 'app/rigs/rigs.component';
     TypographyComponent,
     DialogComponent,
     IconsComponent,
-    RigsComponent
+    RigsComponent,
+    StatisticsComponent
   ],
   providers: [NiceHashService, { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA]
