@@ -20,6 +20,6 @@ export const url = {
     EthChangeRate: "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=EUR",
     profitAvg: environment.port+"/averageProfit/global",
     hashrateAvg: environment.port+"/averageHashrate/global",
-    profitStats:  environment.port+"/profitStats/global",
-    hashrateStats:  environment.port+"/hashrateStats/global"
+    profitStats:  environment.port+"/profitStats",
+    hashrateStats:  environment.port+"/hashrateStats"
 } 
