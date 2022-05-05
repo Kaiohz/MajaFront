@@ -32,11 +32,11 @@ public getInfosWallet(): Observable<Object>{
 }
 
 public getChangeRate(): Observable<Object>{
-    return this.http.get(url.blockchainChangeRate)
+    return this.http.get(url.protocol+window.location.hostname+url.blockchainChangeRate)
 }
 
 public getChangeRateEth(): Observable<Object>{
-    return this.http.get(url.EthChangeRate)
+    return this.http.get(url.protocol+window.location.hostname+url.EthChangeRate)
 }
 
 public sendOrder(id:string,amount:Number): Observable<Object>{
