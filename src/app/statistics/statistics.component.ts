@@ -306,8 +306,8 @@ export class StatisticsComponent implements OnInit {
       ,complete: () => {
         this.getAverages();
         this.oRigs.getValue().forEach( rig => {
-          this.getStatsProfit(this.chartTime.getValue(),rig.name.toLocaleLowerCase())
-          this.getStatsHashrate(this.chartTimeHashrate.getValue(),rig.name.toLocaleLowerCase())
+          this.getStatsProfit(this.chartTime.getValue(),rig.name)
+          this.getStatsHashrate(this.chartTimeHashrate.getValue(),rig.name)
         })
       }
     })
