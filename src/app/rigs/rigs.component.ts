@@ -75,7 +75,6 @@ export class RigsComponent implements OnInit {
   getChangeRate(){
     this.niceHashService.getChangeRate().subscribe({
       next: value => {
-        console.log("Value",value)
         this.changeRate.next(value['value'])
       },
       error: err => {
