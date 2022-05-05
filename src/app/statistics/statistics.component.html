@@ -1,0 +1,170 @@
+<div style="background-color:#202124" class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                  <div class="card-header card-header-danger card-header-icon">
+                      <div class="card-icon">
+                          <i class="material-icons">account_balance_wallet</i>
+                      </div>
+                      <p class="card-category">Portefeuille</p>
+                      <h6 class="card-title">{{balanceBTC.getValue()}}
+                          <small>BTC</small>
+                      </h6>
+                      <h5 class="card-title">{{balance.getValue()}}
+                        <small>EUR</small>
+                    </h5>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                  <div class="card-header card-header-danger card-header-icon">
+                      <div class="card-icon">
+                          <i class="material-icons">trending_up</i>
+                      </div>
+                      <p class="card-category">Taux de change</p>
+                      <h6 class="card-title">1 BTC = {{(1/changeRate.getValue()).toFixed(2)}} €</h6>
+                      <h6 class="card-title">1 ETH = {{changeRateEth.getValue()}} €</h6>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                  <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">attach_money</i>
+                    </div>
+                      <p class="card-category">Hashrate/Renta</p>
+                      <h6 class="card-title">{{hTotal.getValue()}} MH/s</h6>
+                      <h6 class="card-title">{{euros.getValue().toFixed(2)}} €/24h</h6>
+                      <h6 class="card-title">{{(euros.getValue() * 30).toFixed(2)}} €/Mois</h6>
+                      <h6 class="card-title">{{(euros.getValue() * 365).toFixed(2)}} €/An</h6>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                  <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">money_off</i>
+                    </div>
+                      <p class="card-category">En attente</p>
+                      <h6 class="card-title">{{unpaidAmount.getValue()}} BTC</h6>
+                      <h6 class="card-title">{{unpaidEuros.getValue()}} €</h6>
+                      <h6 class="card-title">Prochain paiement : {{nextPayout.getValue()}}</h6>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">power</i>
+                    </div>
+                    <p class="card-category">Puissance/Coût</p>
+                    <h6 class="card-title">{{pTotal.getValue()}}W</h6>
+                    <h6 class="card-title">{{energyPrice}} cts/Kwh</h6>
+                    <h6 class="card-title">{{(eTotal.getValue()).toFixed(2)}} €/24h</h6>
+                    <h6 class="card-title">{{(eTotal.getValue()*30).toFixed(2)}} €/Mois</h6>
+                    <h6 class="card-title">{{(eTotal.getValue()*365).toFixed(2)}} €/An</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">savings</i>
+                    </div>
+                    <p class="card-category">Revenus estimés</p>
+                    <h6 class="card-title">{{revenues.getValue()}} €/24h</h6> 
+                    <h6 class="card-title">{{(revenues.getValue() * 30).toFixed(2)}} €/Mois</h6>
+                    <h6 class="card-title">{{(revenues.getValue() * 365).toFixed(2)}} €/An</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">signal_wifi_4_bar</i>
+                    </div>
+                    <p class="card-category">Machines en ligne.</p>
+                    <h6 class="card-title">{{rigMining.getValue()}} Rig(s) en ligne. </h6>
+                    <h6 class="card-title">{{devicesMining.getValue()}} Carte(s) graphique(s) en ligne. </h6>  
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">signal_wifi_off</i>
+                    </div>
+                    <p class="card-category">Machines hors ligne.</p>
+                    <h6 class="card-title">{{rigOffline.getValue()}} Rig(s) hors ligne. </h6> 
+                    <h6 class="card-title">{{devicesOffline.getValue()}} Carte(s) graphique(s) hors ligne. </h6> 
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="card card-stats">
+                <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">query_stats</i>
+                    </div>
+                    <p class="card-category">Moyenne rendement</p>
+                    <h6 class="card-title">{{(averageHashrate.getValue()).toFixed(2)}} MH/S</h6>
+                    <h6 class="card-title">{{averageProfit.getValue()}} BTC/24h</h6>
+                    <h6 class="card-title">{{averageProfitEuros.getValue().toFixed(2)}} €/24h</h6>
+                    <h6 class="card-title">{{(averageProfitEuros.getValue() * 30).toFixed(2)}} €/MOIS</h6>
+                    <h6 class="card-title">{{(averageProfitEuros.getValue() * 365).toFixed(2)}} €/AN</h6>
+                </div>
+            </div>
+        </div>
+      </div>  
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-chart">
+                <div class="card-header card-header-success">
+                    <div class="ct-chart" id="dailySalesChart"></div>
+                </div>
+                <div class="card-body">
+                    <h4 *ngIf="chartTime.getValue() > 0 " class="card-title">Rendement € ({{chartTime.getValue()/6}} dernières heures)</h4>
+                    <h4 *ngIf="chartTime.getValue() < 1 " class="card-title">Rendement € (24 dernières heures)</h4>
+                    <button (click)=getStatsProfit(36) style="background-color: #340357;" mat-raised-button color="warn">
+                        6 H
+                    </button>
+                    <button (click)=getStatsProfit(72) style="background-color: #340357;" mat-raised-button color="warn">
+                        12 H
+                    </button>
+                    <button (click)=getStatsProfit(0) style="background-color: #340357;" mat-raised-button color="warn">
+                        24 H
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="card card-chart">
+                <div class="card-header card-header-success">
+                    <div class="ct-chart" id="dailySalesChart2"></div>
+                </div>
+                <div class="card-body">
+                    <h4 *ngIf="chartTimeHashrate.getValue() > 0 " class="card-title">Hashrate MH/S ({{chartTimeHashrate.getValue()/6}} dernières heures)</h4>
+                    <h4 *ngIf="chartTimeHashrate.getValue() < 1 " class="card-title">Hashrate MH/S (24 dernières heures)</h4>
+                    <button (click)=getStatsHashrate(36) style="background-color: #340357;" mat-raised-button color="warn">
+                        6 H
+                    </button>
+                    <button (click)=getStatsHashrate(72) style="background-color: #340357;" mat-raised-button color="warn">
+                        12 H
+                    </button>
+                    <button (click)=getStatsHashrate(0) style="background-color: #340357;" mat-raised-button color="warn">
+                        24 H
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>
