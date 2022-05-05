@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <h4 *ngIf="chartTime.getValue() > 0 " class="card-title">{{ rig.name }} Rendement € ({{chartTime.getValue()/6}} dernières heures)</h4>
                     <h4 *ngIf="chartTime.getValue() < 1 " class="card-title">{{ rig.name }} Rendement € (24 dernières heures)</h4>
-                    <button (click)=getStatsProfit(36) style="background-color: #340357;" mat-raised-button color="warn">
+                    <!--<button (click)=getStatsProfit(36) style="background-color: #340357;" mat-raised-button color="warn">
                         6 H
                     </button>
                     <button (click)=getStatsProfit(72) style="background-color: #340357;" mat-raised-button color="warn">
@@ -16,7 +16,7 @@
                     </button>
                     <button (click)=getStatsProfit(0) style="background-color: #340357;" mat-raised-button color="warn">
                         24 H
-                    </button>
+                    </button>-->
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
                 <div class="card-body">
                     <h4 *ngIf="chartTimeHashrate.getValue() > 0 " class="card-title">{{ rig.name }} Hashrate MH/S ({{chartTimeHashrate.getValue()/6}} dernières heures)</h4>
                     <h4 *ngIf="chartTimeHashrate.getValue() < 1 " class="card-title">{{ rig.name }} Hashrate MH/S (24 dernières heures)</h4>
-                    <button (click)=getStatsHashrate(36) style="background-color: #340357;" mat-raised-button color="warn">
+                    <!--<button (click)=getStatsHashrate(36) style="background-color: #340357;" mat-raised-button color="warn">
                         6 H
                     </button>
                     <button (click)=getStatsHashrate(72) style="background-color: #340357;" mat-raised-button color="warn">
@@ -36,7 +36,7 @@
                     </button>
                     <button (click)=getStatsHashrate(0) style="background-color: #340357;" mat-raised-button color="warn">
                         24 H
-                    </button>
+                    </button>-->
                 </div>
             </div>
         </div>
