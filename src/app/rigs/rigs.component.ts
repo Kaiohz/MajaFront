@@ -75,7 +75,7 @@ export class RigsComponent implements OnInit {
   getChangeRate(){
     this.niceHashService.getChangeRate().subscribe({
       next: value => {
-        this.changeRate.next(value['value'])
+        this.changeRate.next(value['EUR'])
       },
       error: err => {
         console.log("Erreur communication api change rate : "+err)
