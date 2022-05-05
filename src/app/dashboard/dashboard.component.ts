@@ -179,7 +179,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getStatsProfit(time) {
-    this.niceHashService.getProfitStats().subscribe({
+    this.niceHashService.getProfitStats("global").subscribe({
       next: value => {
         var profitStats = <result>value
         var serie = profitStats.result.map( row => row.value).map( str => Number(str)).map( btc => btc*(1/this.changeRate.getValue())).reverse()
@@ -194,7 +194,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getStatsHashrate(time) {  
-    this.niceHashService.getHashrateStats().subscribe({
+    this.niceHashService.getHashrateStats("global").subscribe({
       next: value => {
         var hashrateStats = <result>value
         var serie = hashrateStats.result.map( row => row.value).map( str => Number(str)).reverse()

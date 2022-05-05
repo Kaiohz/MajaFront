@@ -179,7 +179,7 @@ export class StatisticsComponent implements OnInit {
   }
 
   getStatsProfit(time,rig) {
-    this.niceHashService.getProfitStats().subscribe({
+    this.niceHashService.getProfitStats(rig).subscribe({
       next: value => {
         var profitStats = <result>value
         var serie = profitStats.result.map( row => row.value).map( str => Number(str)).map( btc => btc*(1/this.changeRate.getValue())).reverse()
@@ -194,7 +194,7 @@ export class StatisticsComponent implements OnInit {
   }
 
   getStatsHashrate(time,rig) {  
-    this.niceHashService.getHashrateStats().subscribe({
+    this.niceHashService.getHashrateStats(rig).subscribe({
       next: value => {
         var hashrateStats = <result>value
         var serie = hashrateStats.result.map( row => row.value).map( str => Number(str)).reverse()
@@ -306,8 +306,8 @@ export class StatisticsComponent implements OnInit {
       ,complete: () => {
         this.getAverages();
         this.oRigs.getValue().forEach( rig => {
-          this.getStatsProfit(this.chartTime.getValue(),rig.name)
-          this.getStatsHashrate(this.chartTimeHashrate.getValue(),rig.name)
+          this.getStatsProfit(this.chartTime.getValue(),rig.name.toLocaleLowerCase())
+          this.getStatsHashrate(this.chartTimeHashrate.getValue(),rig.name.toLocaleLowerCase())
         })
       }
     })

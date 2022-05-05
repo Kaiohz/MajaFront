@@ -60,12 +60,12 @@ public getAverageHashrate(): Observable<Object>{
     return this.http.get(url.protocol+window.location.hostname+url.hashrateAvg)
 }
 
-public getProfitStats(): Observable<Object>{
-    return this.http.get(url.protocol+window.location.hostname+url.profitStats)
+public getProfitStats(rig): Observable<Object>{
+    return this.http.get(url.protocol+window.location.hostname+url.profitStats+"/"+rig)
 }
 
-public getHashrateStats(): Observable<Object>{
-    return this.http.get(url.protocol+window.location.hostname+url.hashrateStats)
+public getHashrateStats(rig): Observable<Object>{
+    return this.http.get(url.protocol+window.location.hostname+url.hashrateStats+"/"+rig)
 }
 
 } 
