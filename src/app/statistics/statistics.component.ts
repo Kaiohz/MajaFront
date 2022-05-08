@@ -78,8 +78,8 @@ export class StatisticsComponent implements OnInit {
       lineSmooth: Chartist.Interpolation.cardinal({
           tension: 0
       }),
-      low: Math.min.apply(null,serie),
-      high: Math.max.apply(null,serie)+50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+      low: Math.min(...serie),
+      high: Math.max(...serie)+50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
       chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
   }
 
