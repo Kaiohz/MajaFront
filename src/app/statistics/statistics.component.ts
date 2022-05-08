@@ -62,8 +62,6 @@ export class StatisticsComponent implements OnInit {
 
 
   changeRateChart(serie,table){
-    console.log("Table : ",table)
-    console.log("Serie : ",serie)
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
     const dataDailySalesChart: any = {
       labels: [],
