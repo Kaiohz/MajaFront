@@ -62,6 +62,8 @@ export class StatisticsComponent implements OnInit {
 
 
   changeRateChart(serie,table){
+    console.log("Table : ",table)
+    console.log("Serie : ",serie)
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
     const dataDailySalesChart: any = {
       labels: [],
@@ -185,7 +187,6 @@ export class StatisticsComponent implements OnInit {
       next: value => {
         var profitStats = <result>value
         var serie = profitStats.result.map( row => row.value).map( str => Number(str).toFixed(0)).reverse()
-        console.log("Test : ",serie)
         this.changeRateChart(serie,table);
       }
     })
