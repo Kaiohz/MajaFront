@@ -69,7 +69,6 @@ public getHashrateStats(rig): Observable<Object>{
 }
 
 public getChangeRateStats(table): Observable<Object>{
-    console.log("Url : ",url.protocol+window.location.hostname+url.changerateStats+"/"+table)
     return this.http.get(url.protocol+window.location.hostname+url.changerateStats+"/"+table)
 }
 
