@@ -74,7 +74,7 @@ export class DashboardComponent implements OnInit {
             tension: 0
         }),
         low: Math.min(...serie),
-        high: Math.max(...serie)+50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+        high: Math.max(...serie)+Math.max(...serie)*0.1, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
         chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
     }
 
@@ -98,7 +98,7 @@ export class DashboardComponent implements OnInit {
           tension: 0
       }),
       low: Math.min(...serie),
-      high: Math.max(...serie)+50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+      high: Math.max(...serie)+Math.max(...serie)*0.1, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
       chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
   }
 
