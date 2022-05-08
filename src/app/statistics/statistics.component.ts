@@ -184,7 +184,8 @@ export class StatisticsComponent implements OnInit {
     this.niceHashService.getChangeRateStats(table).subscribe({
       next: value => {
         var profitStats = <result>value
-        var serie = profitStats.result.map( row => row.value).map( str => Number(str))
+        var serie = profitStats.result.map( row => row.value).map( str => Number(str)).reverse()
+        console.log("Test :",serie)
         this.changeRateChart(serie,table);
       }
     })
