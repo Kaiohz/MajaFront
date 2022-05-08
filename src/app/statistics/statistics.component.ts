@@ -62,10 +62,10 @@ export class StatisticsComponent implements OnInit {
 
 
   changeRateChart(serie,table){
-    /*console.log("Table : ",table)
+    console.log("Table : ",table)
     console.log("Serie : ",serie)
     console.log("Min : ",Math.min(serie))
-    console.log("Max : ",Math.max(serie))*/
+    console.log("Max : ",Math.max(serie))
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
     const dataDailySalesChart: any = {
       labels: [],
@@ -78,8 +78,8 @@ export class StatisticsComponent implements OnInit {
       lineSmooth: Chartist.Interpolation.cardinal({
           tension: 0
       }),
-      low: Math.min(serie),
-      high: Math.max(serie)+50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+      low: Math.min.apply(null,serie),
+      high: Math.max.apply(null,serie)+50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
       chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
   }
 
@@ -112,8 +112,6 @@ export class StatisticsComponent implements OnInit {
   }
 
   hashrateChart(serie,labels,time,rig){
-    console.log("Min : ",Math.min(serie))
-    console.log("Max : ",Math.max(serie))
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
     const dataDailySalesChart: any = {
