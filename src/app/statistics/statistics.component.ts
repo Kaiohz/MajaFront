@@ -221,7 +221,6 @@ export class StatisticsComponent implements OnInit {
         var labels = profitStats.result.map( row => row.timestamp).reverse()
         this.profitChart(serie,labels,time,rig);
         this.chartTime.next(time)
-        console.log("Test profit : ",this.chartTime.getValue())
       },error: err => {
         console.log("Erreur communication bdd stats  profit : "+err)
       }
@@ -236,7 +235,6 @@ export class StatisticsComponent implements OnInit {
         var labels = hashrateStats.result.map( row => row.timestamp).reverse()
         this.hashrateChart(serie,labels,time,rig);
         this.chartTimeHashrate.next(time)
-        console.log("Test : ",this.chartTimeHashrate.getValue())
       },error: err => {
         console.log("Erreur communication bdd stats hashrate : "+err)
       }
