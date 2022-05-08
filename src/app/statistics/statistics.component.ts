@@ -62,10 +62,10 @@ export class StatisticsComponent implements OnInit {
 
 
   changeRateChart(serie,table){
-    console.log("Table : ",table)
+    /*console.log("Table : ",table)
     console.log("Serie : ",serie)
     console.log("Min : ",Math.min(serie))
-    console.log("Max : ",Math.max(serie))
+    console.log("Max : ",Math.max(serie))*/
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
     const dataDailySalesChart: any = {
       labels: [],
@@ -112,6 +112,8 @@ export class StatisticsComponent implements OnInit {
   }
 
   hashrateChart(serie,labels,time,rig){
+    console.log("Min : ",Math.min(serie))
+    console.log("Max : ",Math.max(serie))
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
     const dataDailySalesChart: any = {
