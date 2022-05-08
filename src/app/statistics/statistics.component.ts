@@ -66,7 +66,7 @@ export class StatisticsComponent implements OnInit {
     const dataDailySalesChart: any = {
       labels: [],
       series: [
-          serie.slice()
+          serie
       ]
   };
 
