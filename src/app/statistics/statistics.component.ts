@@ -8,6 +8,7 @@ import { MESSAGES } from 'app/enum/messages.enum';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { subscribeOn } from 'rxjs-compat/operator/subscribeOn';
 
 
 
@@ -59,6 +60,29 @@ export class StatisticsComponent implements OnInit {
 
   constructor(private niceHashService: NiceHashService) { }
 
+
+  changeRateChart(serie,table){
+    /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
+    const dataDailySalesChart: any = {
+      labels: [],
+      series: [
+          serie.slice()
+      ]
+  };
+
+  const optionsDailySalesChart: any = {
+      lineSmooth: Chartist.Interpolation.cardinal({
+          tension: 0
+      }),
+      low: Math.min(serie),
+      high: Math.max(serie)+50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+      chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
+  }
+
+  var dailySalesChart = new Chartist.Line("#"+table, dataDailySalesChart, optionsDailySalesChart);
+
+  this.startAnimationForLineChart(dailySalesChart);
+}
 
   profitChart(serie,labels,time,rig){
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
@@ -153,6 +177,17 @@ export class StatisticsComponent implements OnInit {
   loadDashboard() {
     this.clearTotal()
     this.getInfosBtcAddress();
+  }
+
+
+  getChangeRatesGraph(table){
+    this.niceHashService.getChangeRateStats(table).subscribe({
+      next: value => {
+        var profitStats = <result>value
+        var serie = profitStats.result.map( row => row.value).map( str => Number(str)).map( btc => btc*(1/this.changeRate.getValue())).reverse()
+        this.changeRateChart(serie,table);
+      }
+    })
   }
 
   getAverages() {
@@ -305,6 +340,8 @@ export class StatisticsComponent implements OnInit {
       }
       ,complete: () => {
         this.getAverages();
+        this.getChangeRatesGraph("changerate")
+        this.getChangeRatesGraph("changerateeth")
         this.oRigs.getValue().forEach( rig => {
           this.getStatsProfit(this.chartTime.getValue(),rig.name)
           this.getStatsHashrate(this.chartTimeHashrate.getValue(),rig.name)
