@@ -83,8 +83,8 @@ export class RigsComponent implements OnInit {
     })
   }
 
-  getUptime(rig){
-    return this.niceHashService.getUpTime(rig)
+  getUptime(rig: string){
+    return this.niceHashService.getUpTime(rig.toLocaleLowerCase())
   }
 
   getInfosBtcAddress(){
