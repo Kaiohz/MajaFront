@@ -84,7 +84,6 @@ export class RigsComponent implements OnInit {
   }
 
   getUptime(rig: string){
-    console.log("Uptime : ",rig)
     return this.niceHashService.getUpTime(rig.toLocaleLowerCase())
   }
 
@@ -127,7 +126,13 @@ export class RigsComponent implements OnInit {
       }, 
       complete: () => {
         this.getChangeRate()
-
+        this.oRigs.getValue().forEach(async each => {
+          await this.getUptime(each.name).subscribe({
+            next: value => {
+              console.log("test : ",value)
+            }
+          })
+        })
       }
     });
   }

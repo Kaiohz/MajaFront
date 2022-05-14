@@ -107,6 +107,7 @@ export interface NiceHashObject {
     profitability: number
     localProfitability: number
     rigPowerMode: string
+    upTime: number
   }
   
   export interface Device {

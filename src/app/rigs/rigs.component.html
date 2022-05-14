@@ -6,7 +6,7 @@
                   <div class="col-md-12">
                       <div *ngFor="let rig of oRigs.getValue()" class="card">
                           <div class="card-header card-header-danger">
-                              <h4 class="card-title">{{rig.name}}   Uptime : {{ getUptime('fec') | async  }}</h4>
+                              <h4 class="card-title">{{rig.name}}</h4>
                               <h4 class="card-title">{{rig.profitability.toFixed(5)}} BTC/J </h4>
                               <h4 class="card-title">{{(rig.profitability/changeRate.getValue()).toFixed(2)}} €/J</h4>
                               <h4 class="card-title">{{rig.minerStatus}}</h4>
