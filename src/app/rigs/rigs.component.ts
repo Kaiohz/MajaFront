@@ -84,6 +84,7 @@ export class RigsComponent implements OnInit {
   }
 
   getUptime(rig: string){
+    console.log("Uptime : ",rig)
     return this.niceHashService.getUpTime(rig.toLocaleLowerCase())
   }
 
