@@ -129,7 +129,7 @@ export class RigsComponent implements OnInit {
         this.oRigs.getValue().forEach(async each => {
           await this.getUptime(each.name).subscribe({
             next: value => {
-              console.log("test : ",value['result'])
+              each.upTime = Number(value['result'])
             }
           })
         })
