@@ -22,5 +22,6 @@ export const url = {
     hashrateAvg: environment.port+"/averageHashrate/global",
     profitStats:  environment.port+"/profitStats",
     hashrateStats:  environment.port+"/hashrateStats",
-    changerateStats:  environment.port+"/changerategraph"
+    changerateStats:  environment.port+"/changerategraph",
+    upTime: environment.port+"/getUptime",
 } 

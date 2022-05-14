@@ -83,6 +83,10 @@ export class RigsComponent implements OnInit {
     })
   }
 
+  getUptime(rig){
+    return this.niceHashService.getUpTime(rig)
+  }
+
   getInfosBtcAddress(){
     this.niceHashService.getInfosFromBtcAddress().subscribe({
       next: value => {
@@ -122,6 +126,7 @@ export class RigsComponent implements OnInit {
       }, 
       complete: () => {
         this.getChangeRate()
+
       }
     });
   }
