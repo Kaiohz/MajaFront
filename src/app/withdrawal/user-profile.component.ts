@@ -44,6 +44,7 @@ public wallet: BehaviorSubject<Number> = new BehaviorSubject<Number>(null);
   loadDashboard() {
     this.getWithdrawalAdresses()
     this.getChangeRate()
+    
   }
 
 
