@@ -51,7 +51,6 @@ public wallet: BehaviorSubject<Number> = new BehaviorSubject<Number>(null);
   getChangeRate(){
     this.niceHashService.getChangeRate().subscribe({
       next: value => {
-        console.log("Test : ",<number>value['EUR'])
         this.changeRate.next(<number>value['EUR'])
       },
       error: err => {
