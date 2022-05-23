@@ -44,15 +44,15 @@ public wallet: BehaviorSubject<Number> = new BehaviorSubject<Number>(null);
   loadDashboard() {
     this.getWithdrawalAdresses()
     this.getChangeRate()
-    
+
   }
 
 
   getChangeRate(){
     this.niceHashService.getChangeRate().subscribe({
       next: value => {
-        console.log("Test : ",value)
-        this.changeRate.next(<number>value)
+        console.log("Test : ",<number>value['EUR'])
+        this.changeRate.next(<number>value['EUR'])
       },
       error: err => {
         console.log("Erreur communication api change rate : "+err)
