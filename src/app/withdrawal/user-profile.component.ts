@@ -38,7 +38,7 @@ public wallet: BehaviorSubject<Number> = new BehaviorSubject<Number>(null);
 
   ngOnInit(): void {
     this.loadDashboard();
-    setInterval(() => this.loadDashboard(), 30000);
+    setInterval(() => this.loadDashboard(), 60000);
   }
 
   loadDashboard() {
