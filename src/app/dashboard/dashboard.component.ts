@@ -65,9 +65,10 @@ export class DashboardComponent implements OnInit {
     console.log("Test : ",result)
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
       const dataDailySalesChart: any = {
-        labels: ["Rendement"],
+        labels: ["Rendement","Coût elec"],
         series: [
-            serie.slice(-time)
+            serie.slice(-time),
+            result
         ]
     };
 
