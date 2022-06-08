@@ -52,7 +52,7 @@ export class DashboardComponent implements OnInit {
   breakpointWidth: number = 700;
   //work as percentage, i'm lazy don't want to change variable name
   nbMiners: number = 5;
-  energyPrice = 0.19
+  energyPrice = 0.23
   chartTime: BehaviorSubject<number> = new BehaviorSubject<number>(36);
   chartTimeHashrate: BehaviorSubject<number> = new BehaviorSubject<number>(36);
 
