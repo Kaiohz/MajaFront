@@ -65,7 +65,7 @@ export class DashboardComponent implements OnInit {
       const dataDailySalesChart: any = {
         labels: ["Rendement"],
         series: [
-            serie.slice(-time),
+            serie.slice(-time)
         ]
     };
 
