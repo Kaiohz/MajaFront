@@ -63,9 +63,10 @@ export class DashboardComponent implements OnInit {
   profitChart(serie,labels,time){
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
       const dataDailySalesChart: any = {
-        labels: [],
+        labels: ["Rendement","Coût elec"],
         series: [
-            serie.slice(-time)
+            serie.slice(-time),
+            serie.map(each => this.eTotal.getValue())
         ]
     };
 
