@@ -227,7 +227,7 @@ export class DashboardComponent implements OnInit {
         this.rigMining.next(this.results.minerStatuses.MINING)
         this.rigOffline.next(this.results.minerStatuses.OFFLINE)
         if(this.results.devicesStatuses.OFFLINE>0){
-          this.devicesOffline.next(this.results.devicesStatuses.OFFLINE-this.results.minerStatuses.OFFLINE)
+          this.devicesOffline.next(this.results.devicesStatuses.OFFLINE)
         }else{
           this.devicesOffline.next(this.results.devicesStatuses.OFFLINE)
         }
