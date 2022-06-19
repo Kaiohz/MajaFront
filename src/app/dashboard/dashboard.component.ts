@@ -66,7 +66,8 @@ export class DashboardComponent implements OnInit {
         labels: [],
         series: [
             serie.slice(-time),
-            serie.map( () => this.eTotal.getValue().toString()).slice(-time)
+            serie.map( () => this.eTotal.getValue().toString()).slice(-time),
+            serie.map( () => this.averageProfitEuros.getValue().toString()).slice(-time)
         ]
     };
 
