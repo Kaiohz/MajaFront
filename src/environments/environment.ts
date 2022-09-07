@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  port: ":4000",
+  port: ":4001",
   serverProtocol: "http://",
   nicehash: "/nicehash",
   nicehashKd: "/nicehashkd",
